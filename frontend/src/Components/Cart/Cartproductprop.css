@@ -1,0 +1,238 @@
+@media screen and (min-width: 1025px) and (max-width:1366px) {
+    .cartproduct {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 40px;
+        font-size: 12px;
+
+    }
+
+    .inputcheckbox {
+        margin-right: 50px;
+        width: 20px;
+    }
+
+    .cartimage img {
+        width: 120px;
+        height: auto;
+
+        margin-top: -20px;
+
+
+    }
+
+    .cartimage {
+        /* 裁切照片用的 */
+        width: 120px;
+        height: 120px;
+        margin-left: 15px;
+        overflow: hidden;
+    }
+
+    .description {
+        padding-left: 15px;
+        padding-bottom: 30px;
+        width: 55%;
+
+    }
+
+    .description p {
+        min-width: 80px;
+        margin: 0px;
+    }
+
+    /* 
+    .brandandname {
+        width: 200px;
+    } */
+
+    .sedate {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .brane_name_use_to_display_row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .brand p {
+        margin: 0px;
+        padding-bottom: 8px;
+    }
+
+    .deletebutton {
+        cursor: pointer;
+        height: 30px;
+        border: 0px;
+        border-bottom: 1px black solid;
+        background-color: transparent;
+    }
+
+    .cartitem {
+        display: flex;
+        flex-direction: row;
+
+
+    }
+}
+
+
+@media screen and (min-width: 391px)and (max-width:1024px) {
+    .cartproduct {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 30px;
+        font-size: 12px;
+    }
+
+    /* .inputcheckbox {
+        margin-right: 50px;
+        width: 12px;
+    } */
+
+    .cartimage img {
+        width: 100px;
+        height: auto;
+        margin-top: -10px;
+    }
+
+    .cartimage {
+        /* 裁切照片用的 */
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .description {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        padding-bottom: 30px;
+        width: 55%;
+
+    }
+
+    .description p {
+        min-width: 70px;
+        margin: 0px;
+
+    }
+
+
+    .brandandname {
+
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+
+    .sedate {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .brane_name_use_to_display_row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .brand {
+        margin: 0px;
+        padding-bottom: 5px;
+
+    }
+
+    .deletebutton {
+        cursor: pointer;
+        height: 30px;
+        border: 0px;
+        border-bottom: 1px black solid;
+        background-color: transparent;
+    }
+
+    .cartitem {
+        display: flex;
+        flex-direction: row;
+        padding-left: 10px;
+
+    }
+}
+
+@media screen and (min-width: 100px)and (max-width:390px) {
+    .cartproduct {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        margin-bottom: 10px;
+        font-size: 5px;
+        margin-left: 20px;
+        width: 90%;
+        justify-content: space-evenly;
+        background-color: #dcd2c8;
+        border-radius: 5px;
+    }
+
+    .inputcheckbox {
+        margin-right: 5px;
+        width: 15px;
+    }
+
+    .cart img {
+        width: 50px;
+        height: auto;
+        margin-left: -5px;
+        margin-top: -10px;
+
+
+    }
+
+    .cartimage {
+        /* 裁切照片用的 */
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+    }
+
+    .description {
+        display: flex;
+        flex-direction: row;
+        padding-left: 10px;
+        padding-bottom: 30px;
+        width: 60%;
+
+
+    }
+
+    .description p {
+        /* width: 50%; */
+        padding-top: 5px;
+        margin-left: 10px;
+
+    }
+
+
+    .brandandname {
+        width: 70px;
+        margin-bottom: 0px;
+    }
+
+    .sedate p {
+        margin-bottom: 0px;
+    }
+
+    .brane_name_use_to_display_row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cartitem {
+        display: flex;
+        flex-direction: row;
+        padding-left: 10px;
+
+    }
+
+}

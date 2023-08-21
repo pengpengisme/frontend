@@ -1,0 +1,46 @@
+.area-divider {
+    border-top: 1px solid #656363;
+    margin-top: 20px;
+}
+
+.comment_area {
+    margin: 0 5%;
+}
+
+.comment-title {
+    font-size: large;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.comments{
+
+}
+.comments + .comments {
+    margin-top: 5%;
+}
+
+.userPic_containter {
+    display: flex;
+    justify-content: center;
+}
+
+.comment_info {
+    display: flex;
+    gap: 10px;
+}
+.userName {
+    font-weight: bold;
+    font-size: 12px;
+}
+.ago {
+    font-size: 12px;
+    color: rgb(126, 126, 126);
+    display: flex;
+    align-self:flex-end;
+}
+.content {
+    width: 100%;
+    margin-top: 5px;
+    word-wrap: break-word;
+    font-size: 12px;
+}

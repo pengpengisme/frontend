@@ -1,0 +1,156 @@
+@media screen and (min-width:1025px) and (max-width:1366px) {
+    .updatepage23 {
+        margin: 0 auto;
+        /* padding-top: 150px; */
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .page23imgzone {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .page23bag {
+        width: 100px;
+    }
+
+    .page23imgcut {
+        /* 裁切照片用 */
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .page23plusarrow {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .page23arrow {
+        width: 70px;
+        margin-top: 40px;
+    }
+
+    .page23downzone {
+        padding-top: 20px;
+    }
+
+    .page23downzone input {
+        padding-right: 100px;
+    }
+
+}
+
+@media screen and (min-width:391px) and (max-width:1024px) {
+    .updatepage23 {
+        margin: 0 auto;
+        /* padding-top: 150px; */
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .page23imgzone {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .page23bag {
+        width: 100px;
+    }
+
+    .page23imgcut {
+        /* 裁切照片用 */
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .page23plusarrow {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .selectlist_includelisttitle {
+        background-color: aliceblue;
+        width: 500px;
+        min-height: 100px;
+        padding: 5px;
+    }
+
+    .page23arrow {
+        width: 70px;
+        margin-top: 40px;
+    }
+
+    .page23downzone {
+        padding-top: 20px;
+    }
+
+    .page23downzone input {
+        padding-right: 100px;
+    }
+
+}
+
+@media screen and (min-width:100px) and (max-width:390px) {
+    .updatepage23 {
+        margin: 0 auto;
+        /* padding-top: 150px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .page23imgzone {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .page23bag {
+        width: 100px;
+    }
+
+    .page23imgcut {
+        /* 裁切照片用 */
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .page23plusarrow {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .page23arrow {
+        width: 70px;
+        margin-top: 40px;
+    }
+
+    .page23downzone {
+        padding-top: 20px;
+    }
+
+    /* .page23downzone input {
+        padding-right: 100px;
+    } */
+
+    #page23imgnum4 {
+        display: none;
+    }
+
+    #page23imgnum3 {
+        display: none;
+    }
+}

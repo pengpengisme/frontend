@@ -1,0 +1,54 @@
+.word_color{
+    color: #33332ed0;
+}
+
+.bag_order_info_title{
+    font-size: 15px;
+    margin-bottom: 2%;
+}
+
+.func_btn{
+    margin-top: 3%;
+    width: 50%;
+    border: 0;
+    padding: 1%;
+    font-size: 10px;
+    background-color: #dcd2c8;
+    color: #33332E;
+    cursor: pointer;
+}
+
+.btn_1{
+    padding: 2% 0%;
+    border-radius: 0rem 0rem 0rem 0.5rem;
+    border-right: 1px dashed #33332E;
+}
+
+.btn_2{
+    padding: 2% 0%;
+    border-radius: 0rem 0rem 0.5rem 0rem;
+}
+
+.page_btn_list{
+    width: 100%;
+}
+
+.page_btn{
+    font-size: 12px;
+}
+
+.padding{
+    padding-bottom: 0;
+}
+
+@media screen and (min-width: 100px) and (max-width: 430px){
+    .btn_1 > div{
+        font-size: 12px;
+        zoom:0.8;
+    }
+
+    .btn_2 > div{
+        font-size: 12px;
+        zoom:0.8;
+    }
+}

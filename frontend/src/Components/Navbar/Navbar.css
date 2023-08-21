@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500&display=swap');
+
+html{
+    font-family: 'Noto Serif TC', serif;
+    background-color: #EFEAE4;
+}
+
+.nav-up_outline{
+    position: sticky;
+    top: 0;
+}
+
+.nav-up {
+    /* position: relative; */
+    z-index: 99;
+    background-color: #EFEAE4;
+    color: #33332E;
+    display: flex;
+    padding: 0.2rem 1rem;
+    justify-content: space-between;
+}
+
+.site-title{
+    color: #33332E;
+    text-decoration: none;
+    padding: 0.5%;
+    font-size: 32px;
+    letter-spacing: 0.5rem;
+}
+
+.site-title:hover{
+    color: #33332E;
+}
+
+.nav_group{
+    display: flex;
+    margin-top: 1.2%;
+    margin-right: 3%;
+}
+
+.link_group{
+    display: flex;
+    justify-content: space-between;
+}
+
+.link_group > .border{
+    margin-top: 7%;
+    width: 90px;
+    border-color: #EFEAE4!important;
+}
+
+.link_group > .business_border{
+    margin-top: 25.198px;
+}
+
+.link_group > div > a {
+    color: #33332E;
+    text-decoration: none;
+    text-align: center;
+}
+
+.border{
+    height: 25px;
+    bottom: 20px;
+    position: relative;
+    display: block;
+    color: transparent;
+    cursor: pointer;
+    text-align: center;
+}
+
+.border:after{
+    text-align: center;
+    content: '';
+    position: absolute;
+    width: 66px;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -10px;
+    left: 12px;
+    opacity: 0;
+    background-color: #33332E;
+    transform-origin: left bottom;
+    transition: transform 0.5s ease-out, opacity 0.5s;
+}
+
+.border:hover:after{
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: left bottom;
+}
+
+.icon_group{
+    display: contents;
+    float: right;
+}
+
+.searchicon{
+    padding-bottom: 2.5%;
+    cursor: pointer;
+    background-color: #EFEAE4;
+    color: #33332E;
+    font-size: 25px;
+    margin: 0% 1.2%;
+    border: 0;
+    margin-top: -2%;
+}
+  
+.searchicon:hover{
+    background-color: #EFEAE4;
+    color: #33332E;
+    border: 0;
+}
+
+/* sidepanel */
+.closebtn{
+    font-size: 25px;
+    margin-left: 90%;
+    cursor: pointer;
+    color: #33332E;
+}
+
+.closebtn:hover{
+    color: #33332E;
+}
+
+.linksidebar  {
+    width: 0; /*原始設成0*/
+    position: fixed;
+    z-index: 20;
+    height: 100%;
+    right: 0;
+    top: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: 0.5s ease-in-out;
+    padding-top: 10px;
+    opacity: 1;
+}
+
+.overlay-content{
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    padding: 0% 10%;
+    text-decoration: none;
+}
+
+.overlay-content a{
+    color: #33332E;
+    text-decoration: none;
+    font-size: 15px;
+    border-bottom: 1px solid #33332e6b;
+    padding: 7% 0%;
+}
+
+.cartsidebar  {
+    width: 0; /*原始設成0*/
+    position: fixed;
+    z-index: 99;
+    height: 100%;
+    right: 0;
+    top: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+}
+
+.searchbar{
+    /* display: none; */
+    height: 0;
+    padding-bottom: 1%;
+    background-color: #EFEAE4;
+    border: 0;
+    display: flex;
+    /* margin-bottom: 2%; */
+}
+
+.searchbar_icon{
+    margin-left: 5%;
+    font-size: 22px;
+}
+
+.searchbar_input_div{
+    width: 86.5%;
+    padding-top: 0.1%;
+}
+
+.searchbar_input{
+    margin-left: 2%;
+    background-color: #EFEAE4;
+    border: 0;
+    width: 95%;
+    line-height: 2rem;
+    font-size: 15px;
+}
+
+.searchbar_input:focus{
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid #33332E;
+}
+
+.searchbar_btn_div{
+    margin-top: 0.2%;
+}
+
+.searchbar_closebtn{
+    font-size: 20px;
+    cursor: pointer;
+    color: #33332E;
+}
+.searchbar_closebtn:hover{
+    color: #33332E;
+}
+
+@media screen and (max-width:1024px) {
+    .link_group{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 431px) and (max-width: 1024px){
+    .link_group{
+        display: none;
+    }
+    .searchicon{
+        margin-top: -5%;
+    }
+}
+
+@media screen and (min-width: 100px) and (max-width: 430px){
+    .site-title{
+        font-size: 27px;
+    }
+    .searchicon{
+        font-size: 22px;
+        margin-top: -10%;
+    }
+    .searchbar{
+        margin-bottom: 3%;
+    }
+    .searchbar_icon{
+        margin-top: 0.6%;
+        font-size: 20px;
+    }
+    .searchbar_input_div {
+        width: 76.2%;
+    }
+    .searchbar_input{
+        font-size: 13px;
+        padding-bottom: 0.2%;
+    }
+    .searchbar_btn_div{
+        padding-top: 1%;
+    }
+    .searchbar_closebtn{
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,129 @@
+.manager_body{
+    padding: 0% 5%;
+}
+
+.manager_row{
+    margin: 3% 0%;
+}
+
+.managerlist{
+    color: #33332e;
+    background-color: #ffffff;
+    font-size: 18px;
+    margin: 0% 10%;
+    margin-left: 5%;
+}
+
+.manager_col{
+    padding-left: 2.5%;
+}
+
+.managerlist_title{
+    font-size: 22px;
+    margin-top: 3%;
+    font-weight: 600;
+}
+
+.managerbuttonlist{
+    background-color: #6F7C65;
+    color: #dcd2c8;
+    border: 0;
+    margin: 0% 5%;
+    font-size: 15px!important;
+    width:100px!important;
+    border-radius: 0rem!important;
+}
+
+.managerbuttonlist:hover{
+    background-color: #33332e;
+}
+
+.managerlist img{
+    width: 30%;
+    margin: 0;
+}
+
+.manager_col > .col{
+    margin-bottom: 4%;
+}
+
+.managerbutton{
+    margin-bottom: 0%!important;
+    float: right;
+    padding: 3% 0%;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {    
+    .managerlist_title{
+        font-size: 18px;
+    }
+
+    .managerlist{
+        font-size: 14px;
+    }
+
+    .manager_col > .col {
+        margin-bottom: 2.5%;
+    }
+
+    .managerbuttonlist{
+        font-size: 12px!important;
+        padding: 3% 0%;
+        width:80px!important;
+        margin: 2.5% 5%;
+    }
+
+    .managerbutton{
+        padding: 2% 0%;
+    }
+
+    .manager_col {
+        padding-left: 3%;
+    }
+}
+
+@media screen and (min-width: 375px) and (max-width: 1023px) {
+    * {
+        -webkit-text-size-adjust: none;
+    }
+
+    .manager_body{
+        padding: 5%;
+    }
+
+    .manager_row{
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .managerlist_title{
+        font-size: 15px;
+    }
+
+    .managerlist{
+        display: flex;
+        flex-direction: column;
+        font-size: 6px!important;
+        /* transform: scale(0.833); */
+        margin-bottom: 5%;
+    }
+
+    .manager_col > .col {
+        margin-bottom: 2%;
+    }
+
+    .managerbuttonlist{
+        font-size: 12px!important;
+        padding: 3% 2%;
+        width:70px!important;
+        margin: 2.5% 5%;
+    }
+
+    .managerbutton{
+        padding: 3% 0%;
+    }
+
+    .manager_col {
+        padding-left: 3%;
+    }
+}
