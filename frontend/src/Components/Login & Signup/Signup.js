@@ -5,43 +5,44 @@ import Container from './Container';
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [mail, setEmail] = useState('');
+  const [csrfToken, setCsrfToken] = useState('');
+
 
   useEffect(() => {
-    // Fetch the CSRF token from the server
-    axios.get('http://localhost:8000/csrf-token/').then((response) => {
-      const csrfToken = response.data.csrfToken;
+      var csrftoken = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('csrftoken='))
+      .split('=')[1];
 
-      localStorage.setItem('csrfToken', csrfToken);
-      // Include the CSRF token in the request headers
-      axios.defaults.headers.post['X-CSRFToken'] = csrfToken;
-    });
+      axios.defaults.headers.common['X-CSRFToken'] = csrftoken;
+      
+      setCsrfToken(csrftoken)
+      console.log(csrftoken)
   }, []); // Empty dependency array means this effect runs only once after initial render
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const user = {
       username: username,
       password: password,
-      email: email,
+      email: mail,
+      csrfmiddlewaretoken: csrfToken
     };
 
     try {
-      const csrfToken = localStorage.getItem('csrfToken')
 
-      await axios.post(
+      const { data } = await axios.post(
         'http://127.0.0.1:8000/register/',
         user,
         {
           headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken,
           },
           credentials: 'include',
         }
-      )
-
+      );
+      window.location.href = '/login';
       // Handle successful signup (e.g., show a success message)
     } catch (error) {
       console.error('Signup error:', error);
@@ -74,7 +75,7 @@ const Signup = () => {
                 placeholder="Enter Email"
                 name="email"
                 type="email"
-                value={email}
+                value={mail}
                 required
                 onChange={(e) => setEmail(e.target.value)}
               />

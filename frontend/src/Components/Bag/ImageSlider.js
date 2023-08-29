@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import { BiChevronLeft } from "react-icons/bi";
+import { BiChevronRight } from "react-icons/bi";
 
 const ImageSlider = ({ slides }) => {
     let image_url = " "
@@ -28,9 +30,9 @@ const ImageSlider = ({ slides }) => {
 
     const leftArrowStyles = {
         position: "absolute",
-        top: "50%",
+        top: "45%",
         transform: "translate(0, -50%)",
-        left: "32px",
+        left: "0px",
         fontSize: "45px",
         color: "#fff",
         zIndex: 1,
@@ -39,9 +41,9 @@ const ImageSlider = ({ slides }) => {
 
     const rightArrowStyles = {
         position: "absolute",
-        top: "50%",
+        top: "45%",
         transform: "translate(0, -50%)",
-        right: "32px",
+        right: "0px",
         fontSize: "45px",
         color: "#fff",
         zIndex: 1,
@@ -61,8 +63,8 @@ const ImageSlider = ({ slides }) => {
     }
     return (
         <>
-            <div style={leftArrowStyles} onClick={goToPrevious}>L</div>
-            <div style={rightArrowStyles} onClick={goToNext}>R</div>
+            <div style={leftArrowStyles} onClick={goToPrevious} className="slidebtn"><BiChevronLeft /></div>
+            <div style={rightArrowStyles} onClick={goToNext} className="slidebtn"><BiChevronRight /></div>
             <div className="image_itself" style={slideStyles}>
                 {/* images is inside this */}
             </div>

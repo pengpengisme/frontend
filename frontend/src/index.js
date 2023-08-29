@@ -15,6 +15,8 @@ import Update from "./Components/Update/Update";
 import Cart from "./Components/Cart/Cart";
 import Sidebar from "./Components/Cart/sidebar";
 
+import Home from './Components/Product/Home';
+
 import Member from "./Components/Member/Member";
 import Member_edit from './Components/Member/Member_edit';
 import Member_order from "./Components/Member/Member_order"
@@ -32,6 +34,7 @@ root.render(
     <BrowserRouter>
         <Routes>
           <Route path='/' element={<><NavbarConsumer /><DataProvider endpoint={`http://127.0.0.1:8000/api/member/`} render={data => <Member data={data} />} /></>} />
+          <Route path='/home' element={<DataProvider endpoint="api/product/" render={data => <Home data={data}/>} />} />
           <Route path='/member' element={<><NavbarConsumer /> <DataProvider endpoint={`http://127.0.0.1:8000/api/member/`} render={data => <Member data={data} />} /></>} />
           <Route path='/member_edit' element={<><NavbarConsumer /><DataProvider endpoint={`http://127.0.0.1:8000/api/member/`} render={data => <Member_edit data={data} />} /></>} />
           <Route path='/member_order' element={<><NavbarConsumer /><Member_order /></>} />
@@ -42,8 +45,8 @@ root.render(
           <Route path='/forgot-password' element={<><NavbarConsumer /> <ForgetPassword /></>} />
           <Route path='/product' element={<><NavbarConsumer /> <Product /></>} />
           <Route path="/bag/:id" element={<><NavbarConsumer/><Bag/></> } />
-          <Route path="/checkout" element= {<><NavbarConsumer/><Checkout/></>}/>
-          <Route path="/endcheck" element= {<><NavbarConsumer/><EndCheck/></>}/>
+          <Route path="/checkout" element= { <><NavbarConsumer/><Checkout/></>}/>
+          <Route path="/endcheck" element= { <><NavbarConsumer/><EndCheck/></>}/>
 
           <Route path="/sidebar" element={<><NavbarConsumer /><Sidebar /></>} />
           <Route path="/cart" element={<><NavbarConsumer /><Cart /></>} />

@@ -7,7 +7,6 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from django.contrib.auth import authenticate, login, logout
 from backend.models import *
 from backend.serializers import *
         
@@ -22,8 +21,8 @@ def get_member(request):
 def get_member_like(request):
     member_like = Like.objects.filter(mId=1)
     serializer = LikesSerializer(member_like, many=True)
-    return Response(serializer.data)
-    
+    return Response(serializer.data)    
+
 @api_view(['POST'])
 def updateMember(request, mId):
     member = Member.objects.get(mId=mId)
@@ -227,32 +226,19 @@ def upload_product(request):
         return JsonResponse({'message': '照片上傳成功！'})
     return JsonResponse({'message': '請使用 POST 請求上傳照片。',})
 
-#----------vinn-----------#
+
 @api_view(['POST'])
 def register_post(request):
-    # serializer = RegisterSerializer(data=request.data)
-    # serializer.is_valid(raise_exception=True)
-    # serializer.save()
+    user=request.data
+    serializer = RegisterSerializer(data=user)
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+    user_data = serializer.data
+    return Response(user_data, status=status.HTTP_201_CREATED)
 
-    # username = request.data['username']
-    # password = request.data["password"]
-    # email = request.data['email']
-    # user = authenticate(request, username=username, password=password, email=email)
-
-    # # user_data = serializer.data
-    # return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-    clean_data = request.data
-    serializer = RegisterSerializer.validate(data=clean_data)
-    if serializer.is_valid(raise_exception=True):
-        user = serializer.create(clean_data)
-        if user:
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(status=status.HTTP_400_BAD_REQUEST)
-    
 @api_view(['POST'])
-def login_post(request):
-    serializer = LoginSerializer(data=request.data)
+def login_post(self,request):
+    serializer = self.serializer_class(data=request.data)
     serializer.is_valid(raise_exception=True)
     return Response(serializer.data,status=status.HTTP_200_OK)
 

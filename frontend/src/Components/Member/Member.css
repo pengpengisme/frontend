@@ -87,9 +87,12 @@ html{
     padding-bottom: 0.5%;
     font-size: 25px;
     text-align: center;
-    margin: 0% 40%;
-    width: 20%;
-    border-bottom: 1px solid #33332E;
+}
+
+.line{
+    margin: 0% 45%;
+    border-top: 1px solid #33332E;
+    padding-bottom: 2%;
 }
 
 .bag_img_list{
@@ -283,6 +286,10 @@ html{
     .btn_list_btn>button{
         font-size: 13px;
     }
+
+    .line{
+        margin: 0% 42%;
+    }
 }
 
 @media screen and (min-width: 350px) and (max-width: 660px){
@@ -325,6 +332,10 @@ html{
         display: block;
     }
 
+    .line{
+        margin: 0% 38%;
+    }
+
     .forpages {
         width: 106%;
     }
@@ -344,7 +355,7 @@ html{
     }
 }
 
-@media screen and (min-width: 100px) and (max-width: 600px){
+@media screen and (min-width: 100px) and (max-width: 430px){
     .profile{
         display: block;
     }
@@ -397,6 +408,7 @@ html{
         width: 80%;
         padding: 0;
         margin-left: 10%;
+
     }
 
     .btn_list_btn{

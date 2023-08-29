@@ -52,6 +52,7 @@ export const Cartproductprop = (props) => {
                 axios.get("http://127.0.0.1:8000/api/cart")
                     .then(response => {
                         const updatecart = response.data.map(item => {
+                            // let pic = item.pId_pic.json()
                             let pic = JSON.parse(item.pId_pic)
 
                             return (

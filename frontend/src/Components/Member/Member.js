@@ -1,17 +1,12 @@
 import React, { useState, useEffect }from "react";
 import "./Member.css";
 import profile_img from "../../images/IMG_6259.JPG";
-// import bag_img_1 from "../../images/bag_1.jpg";
-// import bag_img_2 from "../../images/bag_2.jpg";
-// import bag_img_3 from "../../images/bag_3.jpg";
-// import bag_img_4 from "../../images/bag_4.jpg";
-// import bag_img_5 from "../../images/bag_5.jpg";
 import { BiEditAlt } from "react-icons/bi";
 
 const Member = ({data}) => {
     const handleClick = () => {
         window.location.href = "/member_order";
-    }
+    };
 
     const editClick = () => {
         window.location.href = "/member_edit";
