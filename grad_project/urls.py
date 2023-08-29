@@ -24,6 +24,7 @@ urlpatterns = [
     path('update/', TemplateView.as_view(template_name='index.html')),
 
     path('api/member/', views.get_member, name="member"),
+    path('api/member_likes/', views.get_member_like, name="likes"),
     path('api/member/updateMember/<int:mId>/', views.updateMember, name="upadateMember"),
     path('api/member/member_order/', views.getMemberOrder, name="member_order"),
     path('api/business/', views.getProduct, name="business"),
@@ -45,8 +46,8 @@ urlpatterns = [
     path('token/', jwt_views.TokenObtainPairView.as_view(), name ='token_obtain_pair'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name= 'token_refresh'),
     path('csrf-token/', views.csrf_token, name='csrf-token'),
-    path('register/',views.register_post,name="register"),
-    path('login/',views.login_post,name="login"),
+    path('register/',views.register_post, name="register"),
+    path('login/',views.login_post, name="login"),
     path('logout/', views.logout_post, name="logout"),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 

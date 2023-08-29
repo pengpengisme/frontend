@@ -20,6 +20,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const user = {
       username: username,
       password: password,
@@ -29,8 +30,8 @@ const Signup = () => {
     try {
       const csrfToken = localStorage.getItem('csrfToken')
 
-      const { data } = await axios.post(
-        'http://127.0.0.1:8000/register',
+      await axios.post(
+        'http://127.0.0.1:8000/register/',
         user,
         {
           headers: {
@@ -39,7 +40,7 @@ const Signup = () => {
           },
           credentials: 'include',
         }
-      );
+      )
 
       // Handle successful signup (e.g., show a success message)
     } catch (error) {

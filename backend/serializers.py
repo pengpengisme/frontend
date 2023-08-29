@@ -7,9 +7,6 @@ from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 class MemberSerializer(serializers.ModelSerializer):
-    like_pic_pId = serializers.IntegerField(source='mId.pId', read_only=True)
-    pic_url = serializers.CharField(source='like_pic_pId.picture', read_only=True)
-
     class Meta:
         model = Member
         fields = '__all__'
@@ -17,6 +14,13 @@ class MemberSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
+        fields = '__all__'
+
+class LikesSerializer(serializers.ModelSerializer):
+    pId_pic = serializers.CharField(source='pId.picture_set.first.picture', read_only = True)
+
+    class Meta:
+        model= Like
         fields = '__all__'
 
 class PictureSerializer(serializers.ModelSerializer):
@@ -49,21 +53,26 @@ class CartSerializer(serializers.ModelSerializer):
 
 #--------vinn--------#
 class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(max_length=68, min_length=6, write_only=True)
+    # password = serializers.CharField(max_length=68, min_length=6, write_only=True)
+
     class Meta:
         model = Member
-        fields = ['email', 'username', 'password']
+        fields = ['mail', 'name', 'password']
+
     def validate(self, attrs):
         email = attrs.get('email', '')
         username = attrs.get('username', '')
+
         if not username.isalnum():
-            raise serializers.ValidationError(
-                self.default_error_messages)
+            raise serializers.ValidationError("Username must be alphanumeric.")
+
         if not email:
-            raise serializers.ValidationError('Email field is required')
+            raise serializers.ValidationError('Email field is required.')
+
         return attrs
-    def create(self, validated_data):
-        return Member.objects.create_user(**validated_data)
+
+    # def create(self, validated_data):
+    #     return Member.objects.create_user(**validated_data)
 
 class LoginSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=6,write_only=True)
@@ -77,9 +86,9 @@ class LoginSerializer(serializers.ModelSerializer):
         }
     class Meta:
         model = Member
-        fields = ['password','username','tokens']
+        fields = ['password','name','tokens']
     def validate(self, attrs):
-        username = attrs.get('username','')
+        username = attrs.get('name','')
         password = attrs.get('password','')
         user = auth.authenticate(username=username,password=password)
         if not user:
@@ -88,7 +97,7 @@ class LoginSerializer(serializers.ModelSerializer):
             raise AuthenticationFailed('Account disabled, contact admin')
         return {
             'email': user.email,
-            'username': user.username,
+            'username': user.name,
             'tokens': user.tokens
         }
 

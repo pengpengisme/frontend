@@ -1,21 +1,40 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
 import "./Member.css";
 import profile_img from "../../images/IMG_6259.JPG";
-import bag_img_1 from "../../images/bag_1.jpg";
-import bag_img_2 from "../../images/bag_2.jpg";
-import bag_img_3 from "../../images/bag_3.jpg";
-import bag_img_4 from "../../images/bag_4.jpg";
-import bag_img_5 from "../../images/bag_5.jpg";
+// import bag_img_1 from "../../images/bag_1.jpg";
+// import bag_img_2 from "../../images/bag_2.jpg";
+// import bag_img_3 from "../../images/bag_3.jpg";
+// import bag_img_4 from "../../images/bag_4.jpg";
+// import bag_img_5 from "../../images/bag_5.jpg";
 import { BiEditAlt } from "react-icons/bi";
 
 const Member = ({data}) => {
     const handleClick = () => {
         window.location.href = "/member_order";
-    };
+    }
 
     const editClick = () => {
         window.location.href = "/member_edit";
     }
+
+    const [likePic, setLikePic] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://127.0.0.1:8000/api/member_likes/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then((response) => response.json())
+        .then((like_pic) => {
+            console.log(like_pic);
+            setLikePic(like_pic);
+        })
+        .catch((error) => {
+            console.error("Error getting likes data:", error);
+        });
+    }, []);
 
     return (
         <div className="member_container">
@@ -41,11 +60,11 @@ const Member = ({data}) => {
             <div className="info_list">
                 <div className="title">收藏包款</div>
                 <div className="bag_img_list">
-                    <img src={bag_img_1} className="bag_img"></img>
-                    <img src={bag_img_2} className="bag_img"></img>
-                    <img src={bag_img_3} className="bag_img"></img>
-                    <img src={bag_img_4} className="bag_img"></img>
-                    <img src={bag_img_5} className="bag_img"></img>
+                    {likePic.map((item) => {
+                        let pic = JSON.parse(item.pId_pic)
+                        const pic_url = "http://127.0.0.1:8000/" + pic.info[0].url;
+                        return <img src={pic_url} className="bag_img" alt={`Bag ${item.id}`} />;
+                    })}
                 </div>
             </div>
         </div> 

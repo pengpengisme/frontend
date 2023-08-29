@@ -42,8 +42,8 @@ root.render(
           <Route path='/forgot-password' element={<><NavbarConsumer /> <ForgetPassword /></>} />
           <Route path='/product' element={<><NavbarConsumer /> <Product /></>} />
           <Route path="/bag/:id" element={<><NavbarConsumer/><Bag/></> } />
-          <Route path="/checkout" element= { <><NavbarConsumer/><Checkout/></>}/>
-          <Route path="/endcheck" element= { <><NavbarConsumer/><EndCheck/></>}/>
+          <Route path="/checkout" element= {<><NavbarConsumer/><Checkout/></>}/>
+          <Route path="/endcheck" element= {<><NavbarConsumer/><EndCheck/></>}/>
 
           <Route path="/sidebar" element={<><NavbarConsumer /><Sidebar /></>} />
           <Route path="/cart" element={<><NavbarConsumer /><Cart /></>} />

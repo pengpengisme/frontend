@@ -22,6 +22,18 @@ class Member(models.Model):
             'access':str(refresh.access_token)
         }
     
+    def create_user(self, email, password=None):
+        if not email:
+            raise ValueError('An email is required.')
+        if not password:
+            raise ValueError('A password is required.')
+        email = self.normalize_email(email)
+        user = self.model(email=email)
+        user.set_password(password)
+        user.save()
+        return user
+
+    
 class Product(models.Model):
     pId = models.AutoField(db_column='pId', primary_key=True)
     name = models.CharField(max_length=255)
@@ -78,4 +90,12 @@ class Cart(models.Model):
     
     class Meta:
         db_table = 'Cart'
+        unique_together = ('mId', 'pId')
+
+class Like(models.Model):
+    mId = models.ForeignKey(Member, on_delete=models.CASCADE, db_column="mId", primary_key=True)
+    pId = models.ForeignKey(Product, on_delete=models.CASCADE, db_column="pId")
+
+    class Meta:
+        db_table = 'Likes'
         unique_together = ('mId', 'pId')
