@@ -13,7 +13,7 @@ urlpatterns = [
     path('member/', TemplateView.as_view(template_name='index.html')),
     path('member_order/', TemplateView.as_view(template_name='index.html')),
     path('member_edit/', TemplateView.as_view(template_name='index.html')),
-    path('product/', TemplateView.as_view(template_name='index.html')),
+    # path('home/', TemplateView.as_view(template_name='index.html')),
     path('bag/<int:id>/', TemplateView.as_view(template_name='index.html')),
     path('checkout/', TemplateView.as_view(template_name='index.html')),
     path('endcheck/', TemplateView.as_view(template_name='index.html')),
@@ -31,9 +31,9 @@ urlpatterns = [
     path('api/business/', views.getProduct, name="business"),
     path('api/update_product/<int:pId>/', views.updateProduct, name="updateProduct"),
     
-    path('api/product/<int:pId>', views.getProducts, name="products"),
-    path('api/picture/<int:pId>', views.getPictures, name="pictures"),
-    path('api/comment/<int:pId>', views.getComments, name="comments"),
+    path('api/product/<int:pId>/', views.getProducts, name="products"),
+    path('api/picture/<int:pId>/', views.getPictures, name="pictures"),
+    path('api/comment/<int:pId>/', views.getComments, name="comments"),
     path('api/member/<int:mId>', views.getMember, name="members"),
     path('api/member/addToCart/', views.addToCart, name="addToCart"),
     path('api/member/updateOrder/', views.updateOrder, name="updateOrder"),
@@ -51,6 +51,7 @@ urlpatterns = [
     path('login/',views.login_post,name="login"),
     path('logout/', views.logout_post, name="logout"),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/home/', views.getAllProduct, name ='homepage'),
 
 ]
 

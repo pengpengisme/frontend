@@ -27,8 +27,8 @@ const Business= () => {
                 <div className="bag_order_all">
                     <div className="btn_list business_btn">
                         {pageNumbers.map((pageNumber, index) => (
-                            <div className="btn_list_btn page_btn">
-                                <button key={pageNumber} onClick={() => setPage(pageNumber)}>{pageNames[index]}</button>
+                            <div className="btn_list_btn page_btn" key={pageNumber}>
+                                <button className={currentPage === pageNumber ? "btn_active" : "btn_inactive"} onClick={() => setPage(pageNumber)} >{pageNames[index]}</button>
                             </div>
                         ))}
                     </div>

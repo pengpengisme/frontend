@@ -49,6 +49,12 @@ def getMemberOrder(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def getAllProduct(request):
+    queryset = Product.objects.all()
+    serializer = ProductSerializer(queryset, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def getProduct(request):
     state = request.query_params.get('state', None)
     

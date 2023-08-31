@@ -4,7 +4,6 @@ import bag_img from '../../images/bag_2.jpg'
 
 const ProductCard = ({data}) => {
     return (
-        // <div className='col-12 col-sm-6 col-md-3'></div>
             <div className='col-lg-3 col-md-6 col-sm-6 col-xs-6 col-4'>
             <Link className='text-dark' to='/bag'>
                 <div className="product-card px-1">

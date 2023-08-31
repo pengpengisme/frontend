@@ -16,7 +16,7 @@ class MemberManager(BaseUserManager):
 
 
 class Member(models.Model):
-    mid = models.AutoField(db_column="mid", primary_key=True)
+    mId = models.AutoField(db_column="mId", primary_key=True)
     name = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     gender = models.CharField(max_length=10)

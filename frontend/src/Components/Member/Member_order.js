@@ -24,8 +24,8 @@ const Member_test = () => {
                 <div className="bag_order_all">
                     <div className="btn_list">
                         {pageNumbers.map((pageNumber, index) => (
-                            <div className="btn_list_btn">
-                                <button key={pageNumber} onClick={() => setPage(pageNumber)}>{pageNames[index]}</button>
+                            <div className="btn_list_btn" key={pageNumber}>
+                                <button className={currentPage === pageNumber ? "btn_active" : "btn_inactive"} onClick={() => setPage(pageNumber)}>{pageNames[index]}</button>
                             </div>
                         ))}
                     </div>

@@ -17,6 +17,23 @@ html{
     color: #33332E;
 }
 
+.alert{
+    background-color: #fff;
+    margin: 0 36% 0 34%;
+    width: 30%;
+    padding: 1% 0%;
+}
+
+.alert > div{
+    width: 100%;
+    text-align: center;
+}
+
+.me-2{
+    font-size: 25px;
+    margin-bottom: 2%;
+}
+
 .info_list{
     background-color: #EFEAE4;
     border-radius: 0.3rem;
@@ -100,6 +117,7 @@ html{
 }
 
 .bag_img{
+    aspect-ratio: 1 / 1;
     padding: 2%;
     width: 20%;
     margin: 0;
@@ -128,12 +146,17 @@ html{
     font-family: 'Noto Serif TC', serif;
 }
 
-.btn_list_btn > button:hover{
-    background-color: #ffffff;
+.btn_active{
+    background-color: #ffffff!important;
     border-radius: 0.3rem;
 }
 
-.btn_list_btn > button:focus{
+.btn_inactive{
+    background-color: #EFEAE4;
+    border-radius: 0.3rem;
+}
+
+.btn_inactive:hover{
     background-color: #ffffff;
     border-radius: 0.3rem;
 }
@@ -160,6 +183,7 @@ html{
 }
 
 .bag_order_img{
+    aspect-ratio: 1 / 1.05;
     width: 100%;
     border-radius: 0.5rem 0.5rem 0rem 0rem;
 }
@@ -229,7 +253,7 @@ html{
     padding: 2% 0%;
     width: 20%;
     float: right;
-    margin-top: 5%;
+    margin: 5% 0%;
 }
 
 .edit_float{

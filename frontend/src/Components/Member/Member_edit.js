@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
+import { SlCheck } from "react-icons/sl";
 
 const Member_edit = ({data}) => {
+    const [showAlert, setShowAlert] = useState(false);
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -25,16 +27,25 @@ const Member_edit = ({data}) => {
         }).then((response) => response.json())
         .then((data) => {
             console.log(data);
-            alert("修改成功!");
-            window.location.href = "/member";
-        })
-        .catch((error) => {
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+                window.location.href = "/member";
+            }, 1000);
+
+        }).catch((error) => {
             console.error("Error updating data:", error);
         });
     };
 
     return (
         <div className="member_container">
+            {showAlert && (
+                <div className="alert alert-dismissible fade show" role="alert">
+                    <div><SlCheck className="bi flex-shrink-0 me-2" width="24" height="24" role="img" /></div>
+                    <div>修改成功!</div>
+                </div>
+            )}
             <div className="info_list">
                 <div className="edit_title">編輯會員資料</div>
                 {data.map((item)=>

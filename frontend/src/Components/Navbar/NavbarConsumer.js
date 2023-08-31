@@ -8,7 +8,7 @@ import Sidebar from "../Cart/sidebar";
 const NavbarConsumer = () => {
     const linkNumbers = [1, 2, 3, 4];
     const sidebarNumbers = [5, 6, 7, 8];
-    const link = ["/product", "/member", "/about", "/login"];
+    const link = ["/home", "/member", "/about", "/login"];
     const linkTag = ["探索包款", "會員資訊", "關於我們", "註冊登入"];
 
     //menu

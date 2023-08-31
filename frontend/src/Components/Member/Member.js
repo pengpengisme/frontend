@@ -56,7 +56,7 @@ const Member = ({data}) => {
                 <div className="title">收藏包款</div>
                 <div className="bag_img_list">
                     {likePic.map((item) => {
-                        let pic = JSON.parse(item.pId_pic)
+                        let pic = JSON.parse(item.pId_pic)  //because資料庫存的json檔
                         const pic_url = "http://127.0.0.1:8000/" + pic.info[0].url;
                         return <img src={pic_url} className="bag_img" alt={`Bag ${item.id}`} />;
                     })}
