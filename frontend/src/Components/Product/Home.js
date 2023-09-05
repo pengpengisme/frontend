@@ -29,7 +29,7 @@ const Home = ({data}) => {
           </div>
           <div className='row'>
             <div className="col mt-3 pt-3 d-flex justify-content-center gap-15 align-items-center">
-              <Link to="/items" className="button signup border-dark">
+              <Link to="/items" className="button signup border-dark readmore">
                     See More
               </Link>
             </div>

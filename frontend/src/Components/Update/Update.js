@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import './Update.css'
 import Updatepage1 from "./Updatepage1";
 import Updatepage2 from "./Updatepage2";
-import Updatepage3 from "./Updatepage3";
 import flow1 from "../../images/FLOW1.png"
 import flow2 from "../../images/FLOW2.png"
-import flow3 from "../../images/FLOW3.png"
 import axios from "axios";
 
 export const Update = () => {
@@ -14,8 +11,7 @@ export const Update = () => {
     const [whichpage, setpage] = useState(1)
     const [formData, setFormData] = useState({
         page1: '',
-        product_pic: [],
-        auth_pic: [],
+        product_pic: []
     })
 
 
@@ -23,16 +19,14 @@ export const Update = () => {
         const currentpage = whichpage;
         console.log("currentpage");
         let newpage = whichpage;
-        if (currentpage !== 3) {
+        if (currentpage !== 2) {
             newpage = whichpage + 1;
             setpage(newpage)
             console.log(formData)
-        }
-        else {
-            newpage = 4;//跳轉頁面
+        }else {
+            newpage = 3;//跳轉頁面
             console.log(formData)
             handlesubmit()
-
         }
 
     }
@@ -75,11 +69,6 @@ export const Update = () => {
             formDataToUpload.append('product_pic', formData.product_pic[i]);
         }
 
-        // 將 auth_pic 檔案列表添加到 formDataToUpload
-        for (let i = 0; i < formData.auth_pic.length; i++) {
-            formDataToUpload.append('auth_pic', formData.auth_pic[i]);
-        }
-
         console.log(formDataToUpload)
 
         const csrfToken = document.cookie.match(/csrftoken=([^;]+)/);
@@ -106,7 +95,6 @@ export const Update = () => {
             <div className="updateflowtext">
                 <p>輸入基本資訊</p>
                 <p>上傳商品照</p>
-                <p>上傳鑑定圖</p>
             </div>
             {whichpage === 1 && <img src={flow1} className="flow" />}
             {whichpage === 1 && <Updatepage1 onChange={(value) => handleFormChange('page1', value)} />}
@@ -114,8 +102,6 @@ export const Update = () => {
             {whichpage === 2 && <img src={flow2} className="flow" />}
             {whichpage === 2 && <Updatepage2 onChange={(value) => handleFormChange('product_pic', value)} />}
 
-            {whichpage === 3 && <img src={flow3} className="flow" />}
-            {whichpage === 3 && <Updatepage3 onChange={(value) => handleFormChange('auth_pic', value)} />}
             <div className="buttonzone">
                 <button onClick={updateprebutton} className="button81">上一步</button>
                 <button onClick={updatenextbutton} className="button81">下一步</button>

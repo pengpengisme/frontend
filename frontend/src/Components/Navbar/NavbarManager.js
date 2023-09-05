@@ -5,8 +5,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 
 const NavbarManager = () => {
     const linkNumbers = [1, 2, 3];
-    const link = ["/update", "/business", "/community"];
-    const linkTag = ["上架商品", "商品管理", "鑑識系統"];
+    const link = ["/update", "/business", "/flow_system"];
+    const linkTag = ["上架商品", "商品管理", "檢驗系統"];
 
     //menu
     const [sidebarWidth, setSidebarWidth] = useState('0px');

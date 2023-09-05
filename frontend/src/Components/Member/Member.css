@@ -318,7 +318,7 @@ html{
 
 @media screen and (min-width: 350px) and (max-width: 660px){
     .edit_list{
-        margin: 3% 10%;
+        margin: 3% 20%;
     }
     .edit_title{
         font-size: 18px;

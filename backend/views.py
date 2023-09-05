@@ -50,7 +50,7 @@ def getMemberOrder(request):
 
 @api_view(['GET'])
 def getAllProduct(request):
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(state='deposite')
     serializer = ProductSerializer(queryset, many=True)
     return Response(serializer.data)
 
@@ -59,16 +59,17 @@ def getProduct(request):
     state = request.query_params.get('state', None)
     
     if state == 'deposite':
-        queryset = Product.objects.filter(state='deposite') #倉庫存放中
+        filtered_products = Product.objects.filter(state='deposite') #倉庫存放中
     elif state == 'to_ship':
-        queryset = Product.objects.filter(state='to_ship')  #出貨中
+        filtered_products = Product.objects.filter(state='to_ship')  #出貨中
     elif state == 'delivery':
-        queryset = Product.objects.filter(state='delivery') #配送中
+        filtered_products = Product.objects.filter(state='delivery') #配送中
     elif state == 'renting':
-        queryset = Product.objects.filter(state='renting')  #租借中
+        filtered_products = Product.objects.filter(state='renting')  #租借中
     elif state == 'takeoff':
-        queryset = Product.objects.filter(state='takeoff')  #以下架商品
+        filtered_products = Product.objects.filter(state='takeoff')  #以下架商品
 
+    queryset = filtered_products.select_related('picture')
     serializer = ProductSerializer(queryset, many=True)
     return Response(serializer.data)
 

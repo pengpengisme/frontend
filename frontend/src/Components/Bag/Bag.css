@@ -6,8 +6,6 @@
 }
 
 .all_container {
-    position: fixed;
-    z-index: -1;
     display: grid;
     /* grid-template-columns: 50% 50%; */
     height: 550px;
@@ -15,8 +13,8 @@
 }
 
 .right_container {
-    padding: 0 30px;
-    padding-bottom: 20px;
+    /* padding: 0 30px; */
+    margin-top: 10px;
     z-index: 0;
     display: block;
     overflow: hidden;
@@ -37,7 +35,10 @@
     /* height: 100%; */
     position: relative;
     background-color: #837a6f;
-    overflow: hidden;   
+    overflow: hidden;
+    width: 90%;
+    height: 90%;
+    margin: 5% auto;
 }
 
 .bag_pic {
@@ -143,7 +144,7 @@
 @media screen and (min-width: 700px) and (max-width:1024px){
     .all_container {
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 60% 40%;
     }
 }
 

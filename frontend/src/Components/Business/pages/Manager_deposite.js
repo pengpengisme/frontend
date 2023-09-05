@@ -32,9 +32,18 @@ function Manager_deposite({data}){
     
     return(
         <div className="bag_order_list">
-            {data.map((item, index)=>
+            {data.map((item, index)=>{
+                let pic_url;
+                if(item.pic){
+                    let pic = JSON.parse(item.pic);
+                    pic_url = "http://127.0.0.1:8000/" + pic.info[0].url;
+                }else{
+                    pic_url = "";
+                }
+
+                return(
                 <div className="bag_order">
-                    <img src="/media/images/bag_4.jpg" className="bag_order_img"></img>
+                    <img src={pic_url} className="bag_order_img"></img>
                     <div className="bag_order_info padding">
                         <div className="bag_order_info_title">{item.brand}</div>
                         <div className="bag_order_info_word word_color">{item.name}</div>
@@ -42,7 +51,8 @@ function Manager_deposite({data}){
                         <button className='func_btn btn_2' key={item.pId} onClick={() => editClick(item.pId)}><div>編輯商品</div></button>
                     </div>
                 </div>
-            )}
+                );
+            })}
         </div>
     )
 }

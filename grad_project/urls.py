@@ -13,7 +13,6 @@ urlpatterns = [
     path('member/', TemplateView.as_view(template_name='index.html')),
     path('member_order/', TemplateView.as_view(template_name='index.html')),
     path('member_edit/', TemplateView.as_view(template_name='index.html')),
-    # path('home/', TemplateView.as_view(template_name='index.html')),
     path('bag/<int:id>/', TemplateView.as_view(template_name='index.html')),
     path('checkout/', TemplateView.as_view(template_name='index.html')),
     path('endcheck/', TemplateView.as_view(template_name='index.html')),

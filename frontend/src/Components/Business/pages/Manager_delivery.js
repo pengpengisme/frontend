@@ -9,8 +9,9 @@ function Manager_delivery({data}){
     return(
         <div className="bag_order_list">
             {data.map((item)=>{
-                let pic = JSON.parse(item.product_pic)
+                let pic = JSON.parse(item.pic)
                 const pic_url = "http://127.0.0.1:8000/" + pic.info[0].url;
+
                 return(
                 <div className="bag_order">
                     <img src={pic_url} className="bag_order_img"></img>
@@ -20,7 +21,8 @@ function Manager_delivery({data}){
                         <button className='func_btn btn_1'><div>取消訂單</div></button>
                         <button className='func_btn btn_2' key={item.pid} onClick={() => editClick(item.pId)}><div>編輯訂單</div></button>
                     </div>
-                </div>);
+                </div>
+                );
             })}
         </div>
 

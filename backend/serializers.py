@@ -12,6 +12,13 @@ class MemberSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ProductSerializer(serializers.ModelSerializer):
+    pic = serializers.SerializerMethodField(method_name='get_pic')
+
+    def get_pic(self, obj):
+        if obj.picture_set.exists():
+            return obj.picture_set.first().picture
+        return None
+    
     class Meta:
         model = Product
         fields = '__all__'
@@ -24,11 +31,6 @@ class LikesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PictureSerializer(serializers.ModelSerializer):
-    product_name = serializers.CharField(source='pId.name', read_only=True)
-    product_brand = serializers.CharField(source='pId.brand', read_only=True)
-    product_state = serializers.CharField(source='pId.state', read_only=True)
-    product_pic = serializers.CharField(source='pId.picture_set.first.picture', read_only = True)
-
     class Meta:
         model = Picture
         fields = '__all__'

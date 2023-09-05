@@ -1,0 +1,15 @@
+.flow_page_text{
+    display: flex;
+    justify-content: center;
+}
+
+.flow_page_text p{
+    width: 85px;
+    text-align: center;
+    font-size: 13px;
+    color: #6F7C65;
+}
+
+.flow_width{
+    width: 280px;
+}

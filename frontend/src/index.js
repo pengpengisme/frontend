@@ -15,14 +15,14 @@ import Update from "./Components/Update/Update";
 import Cart from "./Components/Cart/Cart";
 import Sidebar from "./Components/Cart/sidebar";
 
-import Home from './Components/Product/Home';
-
 import Member from "./Components/Member/Member";
 import Member_edit from './Components/Member/Member_edit';
 import Member_order from "./Components/Member/Member_order"
 import Business from "./Components/Business/Business";
 import Product_edit from "./Components/Business/Product_edit";
-import Product from "./Components/Product/Home";
+import Flow from "./Components/Flow/Flow";
+
+import Home from './Components/Product/Home';
 import Login from "./Components/Login & Signup/Login";
 import Signup from './Components/Login & Signup/Signup';
 import ForgetPassword from "./Components/Login & Signup/Forgotpassword";
@@ -46,6 +46,7 @@ root.render(
           <Route path="/bag/:id" element={<><NavbarConsumer/><Bag/></> } />
           <Route path="/checkout" element= { <><NavbarConsumer/><Checkout/></>}/>
           <Route path="/endcheck" element= { <><NavbarConsumer/><EndCheck/></>}/>
+          <Route path="/flow_system" element= { <><NavbarManager/><Flow/></>}/>
 
           <Route path="/sidebar" element={<><NavbarConsumer /><Sidebar /></>} />
           <Route path="/cart" element={<><NavbarConsumer /><Cart /></>} />
