@@ -309,6 +309,7 @@ html{
 
     .btn_list_btn>button{
         font-size: 13px;
+        padding: 0% 1%;
     }
 
     .line{
@@ -375,7 +376,7 @@ html{
     .btn_list_btn > button{
         width: 100%;
         font-size: 13px;
-        padding: 5% 0%;
+        padding: 5% 1%;
     }
 }
 
@@ -442,7 +443,7 @@ html{
     .btn_list_btn > button{
         width: 100%;
         font-size: 10px;
-        padding: 5% 0%;
+        padding: 5% 1%;
     }
 
     .forpages{

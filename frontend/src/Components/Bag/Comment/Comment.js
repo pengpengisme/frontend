@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Comment.css"
 
-const Comment = ({mId, content, rank}) => {
+const mId = sessionStorage.getItem('mId');
+
+const Comment = ({content, rank}) => {
     const  [username, setUsername] = useState("Loading")
     //留言的使用這頭像
     // const image = './images/userPhoto.png'
@@ -16,9 +18,15 @@ const Comment = ({mId, content, rank}) => {
     // };
 
     const getUserData = async() => {
-        let userData = await fetch(`http://127.0.0.1:8000/api/member/${mId}`)
+        let userData = await fetch(`http://127.0.0.1:8000/api/member/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ mId })
+        })
         userData = await userData.json()
-        setUsername(userData[0].name)
+        setUsername(userData.username)
     }
 
     useEffect(() => {

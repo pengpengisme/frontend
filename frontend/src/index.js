@@ -24,6 +24,7 @@ import Flow from "./Components/Flow/Flow";
 
 import Home from './Components/Product/Home';
 import Login from "./Components/Login & Signup/Login";
+import Logout from "./Components/Login & Signup/Logout"
 import Signup from './Components/Login & Signup/Signup';
 import ForgetPassword from "./Components/Login & Signup/Forgotpassword";
 import "./Components/Login & Signup/App.css";
@@ -41,6 +42,7 @@ root.render(
           <Route path='/business' element={<><NavbarManager /> <Business /></>} />
           <Route path="/product_edit/:id" element={<><NavbarManager /><ProductEditWithData /></>} />
           <Route path='/login' element={<><NavbarConsumer /> <Login /></>} />
+          <Route path="/logout" element={<><NavbarConsumer /> <Logout /></>} />
           <Route path='/signup' element={<><NavbarConsumer /> <Signup /></>} />
           <Route path='/forgot-password' element={<><NavbarConsumer /> <ForgetPassword /></>} />
           <Route path="/bag/:id" element={<><NavbarConsumer/><Bag/></> } />

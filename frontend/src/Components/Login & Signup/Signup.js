@@ -51,54 +51,29 @@ const Signup = () => {
   };
 
   return (
-    <Container className="signup-wrapper py-5 home-wrapper-2">
-      <div className="Auth-form-container">
-        <form className="Auth-form" onSubmit={handleSubmit}>
-          <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Sign Up</h3>
-            <div className="form-group mt-3">
-              <label>Username</label>
-              <input
-                className="form-control mt-1"
-                placeholder="Enter Username"
-                name="username"
-                type="text"
-                value={username}
-                required
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Email</label>
-              <input
-                className="form-control mt-1"
-                placeholder="Enter Email"
-                name="email"
-                type="email"
-                value={mail}
-                required
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Password</label>
-              <input
-                name="password"
-                type="password"
-                className="form-control mt-1"
-                placeholder="Enter password"
-                value={password}
-                required
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="button signup border-dark">
-                Sign Up
-              </button>
-            </div>
+    <Container className="login-wrapper py-5 home-wrapper-2">
+      <div className="row">
+        <div className='col-12'>
+          <div className='auth-card'>
+            <h3 className="text text-center mb-3 pb-4">註冊</h3>
+            <form className="d-flex flex-column gap-15" onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <input className="form-control" placeholder="Username" name="username" type="text" value={username} required onChange={(e) => setUsername(e.target.value)} />
+              </div>
+              <div className="mb-3">
+                <input className="form-control" placeholder="Email" name="email" type="email" value={mail} required onChange={(e) => setEmail(e.target.value)} />
+              </div>
+              <div className="mb-3">
+                <input name="password" type="password" className="form-control" placeholder="Password" value={password} required onChange={(e) => setPassword(e.target.value)} />
+              </div>
+              <div>
+                <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
+                  <button type="submit" className="button border-dark">signup</button>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </Container>
   );

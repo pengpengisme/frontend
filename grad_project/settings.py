@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+# from backend.utils import custom_payload_handler
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -67,6 +68,7 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
+    'JWT_PAYLOAD_HANDLER': 'backend.views.CustomTokenObtainPairView',
 }
 
 ROOT_URLCONF = 'grad_project.urls'
@@ -121,6 +123,8 @@ DATABASES = {
 }
 
 CSRF_COOKIE_SECURE = True
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

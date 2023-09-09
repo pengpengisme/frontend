@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./Bag.css"
 import ImageSlider from "./ImageSlider"
 import Comment from "./Comment/Comment"
+const mId = sessionStorage.getItem('mId');
 
 const Bag = () => {
     const params = useParams()
@@ -70,7 +71,7 @@ const Bag = () => {
         let currentDate = new Date();
         currentDate = formatDate(currentDate);
         let cartData = {
-            mId: 1, //要可以抓到現在是誰在登入 userId
+            mId: mId, //要可以抓到現在是誰在登入 userId
             pId: bagId,
             cartTime: currentDate
         }

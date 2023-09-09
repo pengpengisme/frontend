@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import './Checkout.css'
 import CheckItem from "./CheckItem";
+const mId = sessionStorage.getItem('mId');
+
 const Checkout = () => {
     const [checkBags, setCheckBags] = useState([1, 1, 1]) //先設一個array讓他可以map through
     const getCheck = async () => {
@@ -86,7 +88,7 @@ const Checkout = () => {
         let orderDate = new Date();
         orderDate = formatDate(orderDate);
         let orderData = {
-            mId: 1,
+            mId: mId,
             pId: checkBags[0],
             payment: totoalPrice,
             order_time: orderDate,

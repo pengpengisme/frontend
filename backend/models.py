@@ -17,6 +17,7 @@ class MemberManager(BaseUserManager):
 
 class Member(models.Model):
     mId = models.AutoField(db_column="mId", primary_key=True)
+    username = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     gender = models.CharField(max_length=10)
@@ -25,6 +26,7 @@ class Member(models.Model):
     mail = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     ssn = models.CharField(max_length=255)
+    tokens = models.IntegerField(max_length=255)
     
     class Meta:
         db_table = "Member"
@@ -107,7 +109,7 @@ class User(models.Model):
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     is_superuser = models.BooleanField(max_length=255)
     first_name = models.CharField(max_length=255)
-    member = models.OneToOneField(Member, on_delete=models.CASCADE)
+    member = models.OneToOneField(Member, on_delete=models.CASCADE, related_name='user')
 
     objects = MemberManager()
 
@@ -120,6 +122,7 @@ class User(models.Model):
     
     def tokens(self):
         refresh = RefreshToken.for_user(self)
+
         return{
             'refresh':str(refresh),
             'access':str(refresh.access_token)

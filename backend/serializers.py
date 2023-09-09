@@ -3,8 +3,11 @@
 from rest_framework import serializers
 from backend.models import *
 from django.contrib import auth
+from django.conf import settings
+from django.http import request
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class MemberSerializer(serializers.ModelSerializer):
     class Meta:
@@ -60,6 +63,11 @@ class CartSerializer(serializers.ModelSerializer):
 
 
 #--------vinn--------#
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Member
+        fields = '__all__'
+
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=6, write_only=True)
     class Meta:
@@ -75,11 +83,10 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Email field is required')
         return attrs
     def create(self, validated_data):
-        member = Member()
+        print(validated_data)
+        member = Member(username = validated_data["username"], mail = validated_data["email"])
         member.save()
-        print(member)
-        user = User.objects.create_user(**validated_data, member_id = member.mid)
-        print(user)
+        user = User.objects.create_user(**validated_data, member_id = member.mid) 
         return user
     
 
@@ -87,28 +94,33 @@ class LoginSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=6,write_only=True)
     username = serializers.CharField(max_length=255, min_length=3)
     tokens = serializers.SerializerMethodField()
+
     def get_tokens(self, obj):
         user = Member.objects.get(username=obj['username'])
         return {
             'refresh': user.tokens()['refresh'],
-            'access': user.tokens()['access']
+            'access': user.tokens()['access'],
         }
     class Meta:
         model = Member
         fields = ['password','username','tokens']
-    def validate(self, attrs):
-        username = attrs.get('username','')
-        password = attrs.get('password','')
-        user = auth.authenticate(username=username,password=password)
-        if not user:
-            raise AuthenticationFailed('Invalid credentials, try again')
-        if not user.is_active:
-            raise AuthenticationFailed('Account disabled, contact admin')
-        return {
-            'email': user.email,
-            'username': user.username,
-            'tokens': user.tokens
-        }
+
+    # def validate(self, attrs):
+    #     username = attrs.get('username', '')
+    #     password = attrs.get('password', '')
+    #     user = auth.authenticate(username=username,password=password)
+
+    #     if not user:
+    #         raise AuthenticationFailed('Invalid credentials, try again')
+    #     if not user.is_active:
+    #         raise AuthenticationFailed('Account disabled, contact admin')
+
+    #     return {
+    #         'user_id': user.id,
+    #         'email': user.email,
+    #         'username': user.username,
+    #         'tokens': user.tokens
+    #     }
 
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()
@@ -120,3 +132,16 @@ class LogoutSerializer(serializers.Serializer):
             RefreshToken(self.token).blacklist()
         except TokenError:
             self.fail('bad_token')
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    
+    def get_token(cls, user):
+        token = super().get_token(user)
+        return token
+    
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        user = self.user
+        data["mId"] = user.id + 22
+
+        return data

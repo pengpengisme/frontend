@@ -29,9 +29,14 @@ const Login = () => {
         }
       );
 
+      
+      // console.log(data);
+
       // Store tokens in localStorage
       localStorage.setItem('access_token', data.access);
       localStorage.setItem('refresh_token', data.refresh);
+      sessionStorage.setItem('mId', data.mId);
+      
 
       // Set Authorization header for future requests
       axios.defaults.headers.common['Authorization'] = `Bearer ${data.access}`;
@@ -46,39 +51,27 @@ const Login = () => {
 
   return (
     <Container className="login-wrapper py-5 home-wrapper-2">
-      <div className="Auth-form-container">
-        <form className="Auth-form" onSubmit={submit}>
-          <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Login</h3>
-            <div className="form-group mt-3">
-              <label>Username</label>
-              <input className="form-control mt-1" 
-                placeholder="Enter Username" 
-                name='username'  
-                type='text' value={username}
-                required 
-                onChange={e => setUsername(e.target.value)}/>
-            </div>
-            <div className="form-group mt-3">
-              <label>Password</label>
-              <input name='password' 
-                type="password"     
-                className="form-control mt-1"
-                placeholder="Enter password"
-                value={password}
-                required
-                onChange={e => setPassword(e.target.value)}/>
-            </div>
-            <div className="d-grid gap-2 mt-3">
-              <button type="submit" 
-                 className="button signup border-dark">Submit</button>
-            </div>
-            <div className="d-grid gap-2 mt-3">
-                <p>Not a member? <Link to="/signup">Signup</Link></p>
-            </div>
+      <div className="row">
+        <div className="col-12">
+          <div className="auth-card">
+            <h3 className="text text-center mb-3 pb-4">登入</h3>
+            <form className="d-flex flex-column gap-15" onSubmit={submit}>
+              <div className="mb-3">
+                <input className="form-control" placeholder="Username" name='username' type='text' value={username} required onChange={e => setUsername(e.target.value)}/>
+              </div>
+              <div className="mb-3">
+                <input name='password' type="password" className="form-control" placeholder="Password" value={password} required onChange={e => setPassword(e.target.value)}/>
+              </div>
+              <div>
+                <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
+                  <button type="submit" className="button signup border-dark">login</button>
+                  <Link to="/signup" className="button signup border-dark">signup</Link>
+                </div>
+              </div>
+            </form>
           </div>
-       </form>
-     </div>
+        </div>
+      </div>
     </Container>
      )
 }

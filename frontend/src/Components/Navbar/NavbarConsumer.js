@@ -5,11 +5,10 @@ import { BsHandbag } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import Sidebar from "../Cart/sidebar";
 
+const mId = sessionStorage.getItem('mId');
+
 const NavbarConsumer = () => {
-    const linkNumbers = [1, 2, 3, 4];
-    const sidebarNumbers = [5, 6, 7, 8];
-    const link = ["/home", "/member", "/about", "/login"];
-    const linkTag = ["探索包款", "會員資訊", "關於我們", "註冊登入"];
+    const isLoggedIn = !!mId; // 如果 mId 存在，isLoggedIn 为 true
 
     //menu
     const [sidebarWidth, setSidebarWidth] = useState('0px');
@@ -55,28 +54,28 @@ const NavbarConsumer = () => {
                 <a href={`/`} className='site-title'>PETER</a>
                 <div className='nav_group'>
                     <div className='link_group'>
-                        {linkNumbers.map((linkNumber, index) => (
-                            <>
-                                <div className='border'>
-                                    <a key={linkNumber} href={link[index]} className='link'>{linkTag[index]}</a>
-                                </div>
-                            </>
-                        ))} 
+                        <div className='border'>
+                            <a href="/home" className='link'>探索包款</a>
+                        </div>
+                        {isLoggedIn && (<div className='border'><a href="/member" className='link'>會員資訊</a></div>)}
+                        {isLoggedIn && (<div className='border'><a href="/logout" className='link'>&nbsp;登出&nbsp;</a></div>)}
+                        {!isLoggedIn && (<div className='border'><a href="/login" className='link'>註冊登入</a></div> )}
                     </div>
                     <div className='icon_group'>
-                        <button type="button" className="searchicon" onClick={openSearchbar}><GoSearch /></button>  {/*搜尋*/}
-                        <button type="button" className="searchicon" onClick={opencartSidebar}><BsHandbag /></button> {/*購物車*/}
-                        <button type="button" className="searchicon" onClick={openSidebar}><AiOutlineMenu /></button> {/*menu*/}
+                        <button type="button" className="searchicon" onClick={openSearchbar} style={{marginTop: '-4.5%'}}><GoSearch /></button>  {/*搜尋*/}
+                        <button type="button" className="searchicon" onClick={opencartSidebar} style={{marginTop: '-4.5%'}}><BsHandbag /></button> {/*購物車*/}
+                        <button type="button" className="searchicon" onClick={openSidebar} style={{marginTop: '-4.5%'}}><AiOutlineMenu /></button> {/*menu*/}
                     </div>
 
                     {/* linksidebar */}
                     <div className="linksidebar" style={{ width: sidebarWidth }}>
                         <a className="closebtn" onClick={closeSidebar}>×</a>
                         <div className="overlay-content" style={{ opacity:sidebarOpacity, transition: "all 0.5s 0s" }}>
-                            <a href="/member_order">我的訂單</a>
-                            {sidebarNumbers.map((sidebarNumber, index) => (
-                                <a key={sidebarNumber} href={link[index]}>{linkTag[index]}</a>
-                            ))}  
+                            {isLoggedIn && (<a href="/member_order">我的訂單</a>)}
+                            <a href="/home" className='link'>探索包款</a>
+                            {isLoggedIn && (<a href="/member" className='link'>會員資訊</a>)}
+                            {isLoggedIn && (<a href="/logout" className='link'>帳戶登出</a>)}
+                            {!isLoggedIn && (<a href="/login" className='link'>註冊登入</a>)}  
                         </div>
                     </div>
 

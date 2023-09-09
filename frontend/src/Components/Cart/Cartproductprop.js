@@ -5,7 +5,7 @@ import './Cartproductprop.css';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-
+const mId = sessionStorage.getItem('mId');
 
 export const Cartproductprop = (props) => {
 
@@ -13,13 +13,13 @@ export const Cartproductprop = (props) => {
     // const [pic, setpic] = useState([]);
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/cart")
+        axios.post("http://127.0.0.1:8000/api/cart/", { mId: mId })
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 const updatecart = response.data.map(item => {
-                    console.log(item.pId_pic)
+                    // console.log(item.pId_pic)
                     let pic = JSON.parse(item.pId_pic);
-                    console.log(pic)
+                    // console.log(pic)
 
 
                     return (
@@ -36,7 +36,7 @@ export const Cartproductprop = (props) => {
                     )
 
                 });
-                console.log(updatecart)
+                // console.log(updatecart)
                 setcart(updatecart);
             })
             .catch(error => {
@@ -48,8 +48,8 @@ export const Cartproductprop = (props) => {
     const handleDelete = (pId) => {
         axios.delete(`http://127.0.0.1:8000/api/cart/${pId}/`)
             .then(response => {
-                console.log(response.data.message);
-                axios.get("http://127.0.0.1:8000/api/cart")
+                // console.log(response.data.message);
+                axios.post("http://127.0.0.1:8000/api/cart/", { mId: mId })
                     .then(response => {
                         const updatecart = response.data.map(item => {
                             // let pic = item.pId_pic.json()
@@ -69,7 +69,7 @@ export const Cartproductprop = (props) => {
                             )
 
                         });
-                        console.log(updatecart)
+                        // console.log(updatecart)
                         setcart(updatecart);
                     })
 
