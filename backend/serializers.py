@@ -86,7 +86,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         print(validated_data)
         member = Member(username = validated_data["username"], mail = validated_data["email"])
         member.save()
-        user = User.objects.create_user(**validated_data, member_id = member.mid) 
+        user = User.objects.create_user(**validated_data, member_id =member.mId) 
         return user
     
 
