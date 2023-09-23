@@ -81,6 +81,8 @@ export const Update = () => {
         })
             .then((response) => {
                 console.log('照片上傳成功！');
+                alert("商品上架成功!")
+                window.location.href = "/business";
                 // 在這裡可以更新頁面或做其他處理
             })
             .catch((error) => {

@@ -70,23 +70,26 @@ class UserSerializer(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=6, write_only=True)
+
     class Meta:
         model = User
-        fields = ['email', 'username', 'password']
+        fields = ['email', 'username', 'password','last_name','first_name','gender','address']
+
     def validate(self, attrs):
         email = attrs.get('email', '')
         username = attrs.get('username', '')
-        if not username.isalnum():
+        if not username.isalnum():#檢查用戶是否為字母數字
             raise serializers.ValidationError(
                 self.default_error_messages)
         if not email:
             raise serializers.ValidationError('Email field is required')
         return attrs
-    def create(self, validated_data):
+    
+    def create(self, validated_data):#創建新用戶
         print(validated_data)
-        member = Member(username = validated_data["username"], mail = validated_data["email"])
+        member = Member(username = validated_data["username"], mail = validated_data["email"],first_name= validated_data["first_name"],last_name= validated_data["last_name"],gender= validated_data["gender"],address= validated_data["address"],defaultimg="http://127.0.0.1:8000/media/images/defaultimg.png")
         member.save()
-        user = User.objects.create_user(**validated_data, member_id =member.mId) 
+        user = User.objects.create_user(**validated_data, member_id =member.mId)  #hash
         return user
     
 
@@ -105,23 +108,7 @@ class LoginSerializer(serializers.ModelSerializer):
         model = Member
         fields = ['password','username','tokens']
 
-    # def validate(self, attrs):
-    #     username = attrs.get('username', '')
-    #     password = attrs.get('password', '')
-    #     user = auth.authenticate(username=username,password=password)
-
-    #     if not user:
-    #         raise AuthenticationFailed('Invalid credentials, try again')
-    #     if not user.is_active:
-    #         raise AuthenticationFailed('Account disabled, contact admin')
-
-    #     return {
-    #         'user_id': user.id,
-    #         'email': user.email,
-    #         'username': user.username,
-    #         'tokens': user.tokens
-    #     }
-
+   
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()
     def validate(self, attrs):
@@ -142,6 +129,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         user = self.user
-        data["mId"] = user.id + 22
+        data["mId"] = user.id
 
         return data

@@ -8,9 +8,11 @@ const ProductCard = ({data}) => {
     const pic_url = "http://127.0.0.1:8000/" + pic.info[0].url;
     console.log(pic_url);
 
+    const link_url = "http://127.0.0.1:8000/bag/" + data.pId + "/";
+
     return (
             <div className='col-lg-3 col-md-6 col-sm-6 col-xs-6 col-4'>
-            <Link className='text-dark' to='/bag'>
+            <Link className='text-dark' to={link_url}>
                 <div className="product-card px-1">
                     <div className="product-image">
                         <img src={pic_url} alt="product image" className='img-fluid' style={{width: "400px", aspectRatio: 1 / 1}} />

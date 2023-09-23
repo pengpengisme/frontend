@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Routes, useParams} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import DataProvider from './Components/Dataprovider';
 import NavbarConsumer from './Components/Navbar/NavbarConsumer';
@@ -23,6 +23,7 @@ import Product_edit from "./Components/Business/Product_edit";
 import Flow from "./Components/Flow/Flow";
 
 import Home from './Components/Product/Home';
+import SearchResult from './Components/Product/searchresult';
 import Login from "./Components/Login & Signup/Login";
 import Logout from "./Components/Login & Signup/Logout"
 import Signup from './Components/Login & Signup/Signup';
@@ -33,37 +34,40 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<><NavbarConsumer /><DataProvider endpoint={`http://127.0.0.1:8000/api/member/`} render={data => <Member data={data} />} /></>} />
-          <Route path='/home' element={<><NavbarConsumer /><DataProvider endpoint={`http://127.0.0.1:8000/api/home/`} render={data => <Home data={data}/>} /></>} />
-          <Route path='/member' element={<><NavbarConsumer /> <DataProvider endpoint={`http://127.0.0.1:8000/api/member/`} render={data => <Member data={data} />} /></>} />
-          <Route path='/member_edit' element={<><NavbarConsumer /><DataProvider endpoint={`http://127.0.0.1:8000/api/member/`} render={data => <Member_edit data={data} />} /></>} />
-          <Route path='/member_order' element={<><NavbarConsumer /><Member_order /></>} />
-          <Route path='/business' element={<><NavbarManager /> <Business /></>} />
-          <Route path="/product_edit/:id" element={<><NavbarManager /><ProductEditWithData /></>} />
-          <Route path='/login' element={<><NavbarConsumer /> <Login /></>} />
-          <Route path="/logout" element={<><NavbarConsumer /> <Logout /></>} />
-          <Route path='/signup' element={<><NavbarConsumer /> <Signup /></>} />
-          <Route path='/forgot-password' element={<><NavbarConsumer /> <ForgetPassword /></>} />
-          <Route path="/bag/:id" element={<><NavbarConsumer/><Bag/></> } />
-          <Route path="/checkout" element= { <><NavbarConsumer/><Checkout/></>}/>
-          <Route path="/endcheck" element= { <><NavbarConsumer/><EndCheck/></>}/>
-          <Route path="/flow_system" element= { <><NavbarManager/><Flow/></>}/>
+      <Routes>
+        <Route path='/' element={<><NavbarConsumer /><DataProvider endpoint={`http://127.0.0.1:8000/api/member/`} render={data => <Member data={data} />} /></>} />
+        <Route path='/home' element={<><NavbarConsumer /><DataProvider endpoint={`http://127.0.0.1:8000/api/home/`} render={data => <Home data={data} />} /></>} />
+        <Route path='/member' element={<><NavbarConsumer /> <DataProvider endpoint={`http://127.0.0.1:8000/api/member/`} render={data => <Member data={data} />} /></>} />
+        <Route path='/member_edit' element={<><NavbarConsumer /><DataProvider endpoint={`http://127.0.0.1:8000/api/member/`} render={data => <Member_edit data={data} />} /></>} />
+        <Route path='/member_order' element={<><NavbarConsumer /><Member_order /></>} />
+        <Route path='/business' element={<><NavbarManager /> <Business /></>} />
+        <Route path="/product_edit/:id" element={<><NavbarManager /><ProductEditWithData /></>} />
+        <Route path='/login' element={<><NavbarConsumer /> <Login /></>} />
+        <Route path="/logout" element={<><NavbarConsumer /> <Logout /></>} />
+        <Route path='/signup' element={<><NavbarConsumer /> <Signup /></>} />
+        <Route path='/forgot-password' element={<><NavbarConsumer /> <ForgetPassword /></>} />
+        <Route path="/bag/:id" element={<><NavbarConsumer /><Bag /></>} />
+        <Route path="/checkout" element={<><NavbarConsumer /><Checkout /></>} />
+        <Route path="/endcheck" element={<><NavbarConsumer /><EndCheck /></>} />
+        <Route path="/flow_system" element={<><NavbarManager /><Flow /></>} />
 
-          <Route path="/sidebar" element={<><NavbarConsumer /><Sidebar /></>} />
-          <Route path="/cart" element={<><NavbarConsumer /><Cart /></>} />
-          <Route path="/Update" element={<><NavbarManager /><Update /></>} />
-        </Routes>
+        <Route path="/sidebar" element={<><NavbarConsumer /><Sidebar /></>} />
+        <Route path="/cart" element={<><NavbarConsumer /><Cart /></>} />
+        <Route path="/Update" element={<><NavbarManager /><Update /></>} />
+        <Route path="/searchresult" element={<><NavbarManager /><SearchResult /></>} />
+
+
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
 
 
-function ProductEditWithData(){
+function ProductEditWithData() {
   const { id } = useParams(); // Access the 'id' parameter using useParams hook
 
   return (
-    <DataProvider endpoint={`http://127.0.0.1:8000/api/product/${id}`} render={data => <Product_edit data={data} />} />
+    <DataProvider endpoint={`http://127.0.0.1:8000/api/product_info/${id}/`} render={data => <Product_edit data={data} />} />
   );
 }
 

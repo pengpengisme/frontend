@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 function Manager_deposite({data}){
     const editClick = (pId) => {
-        window.location.href = `/product_edit/${pId}`;
+        window.location.href = `/product_edit/${pId}/`;
     }
     
     const takeoff = (pId, index) => {

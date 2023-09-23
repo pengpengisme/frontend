@@ -1,11 +1,11 @@
-import React, { useState, useEffect }from "react";
+import React, { useState, useEffect } from "react";
 import "./Member.css";
 import profile_img from "../../images/IMG_6259.JPG";
 import { BiEditAlt } from "react-icons/bi";
 
 const mId = sessionStorage.getItem('mId');
-
-const Member = ({data}) => {
+console.log(mId)
+const Member = ({ data }) => {
     const handleClick = () => {
         window.location.href = "/member_order";
     };
@@ -24,23 +24,23 @@ const Member = ({data}) => {
             },
             body: JSON.stringify({ mId })
         })
-        .then((response) => response.json())
-        .then((like_pic) => {
-            // console.log(like_pic);
-            setLikePic(like_pic);
-        })
-        .catch((error) => {
-            console.error("Error getting likes data:", error);
-        });
+            .then((response) => response.json())
+            .then((like_pic) => {
+                // console.log(like_pic);
+                setLikePic(like_pic);
+            })
+            .catch((error) => {
+                console.error("Error getting likes data:", error);
+            });
     }, []);
 
-    if(mId){
+    if (mId) {
         return (
             <div className="member_container">
                 <div className="info_list">
                     <div className="profile">
                         <div className="profile_info">
-                            <img src={profile_img} className="profile_img"></img>
+                            <img src={data.defaultimg} className="profile_img"></img>
                         </div>
                         <div className="profile_detail">
                             <div className="icon">
@@ -64,9 +64,9 @@ const Member = ({data}) => {
                         })}
                     </div>
                 </div>
-            </div> 
+            </div>
         )
-    }else{
+    } else {
         window.location.href = "/login";
     }
 }

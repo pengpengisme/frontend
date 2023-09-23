@@ -12,6 +12,9 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from backend.models import *
 from backend.serializers import *
+import json
+from django.db.models import Q
+
         
 @api_view(['POST'])
 def get_member(request):
@@ -36,7 +39,7 @@ def get_member_like(request):
 @api_view(['POST'])
 def updateMember(request, mId):
     member = Member.objects.get(mId=mId)
-    serializer = MemberSerializer(member, data=request.data['updatedData'], partial=True)  # 使用 MemberSerializer
+    serializer = MemberSerializer(member, data=request.data, partial=True)  # 使用 MemberSerializer
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(serializer.data)
@@ -73,12 +76,14 @@ def getProduct(request):
     
     if state == 'deposite':
         filtered_products = Product.objects.filter(state='deposite') #倉庫存放中
+    elif state == 'file_create':
+        filtered_products = Product.objects.filter(state='file_create')  #待建檔
     elif state == 'to_ship':
         filtered_products = Product.objects.filter(state='to_ship')  #出貨中
-    elif state == 'delivery':
-        filtered_products = Product.objects.filter(state='delivery') #配送中
     elif state == 'renting':
         filtered_products = Product.objects.filter(state='renting')  #租借中
+    elif state == 'file_update':
+        filtered_products = Product.objects.filter(state='file_update')  #待處理
     elif state == 'takeoff':
         filtered_products = Product.objects.filter(state='takeoff')  #以下架商品
 
@@ -95,6 +100,11 @@ def updateProduct(request, pId):
 
     return Response(serializer.data)
 
+@api_view(['POST'])
+def getProductInfo(request, pId):
+    product = Product.objects.get(pId=pId)
+    serializer = ProductSerializer(product, many=False)#serializer
+    return Response(serializer.data)
 
 
 #----------------kevin----------------#
@@ -116,11 +126,6 @@ def getComments(request, pId):
     serializer = CommentSerializer(comments, many=True)#serializer
     return Response(serializer.data)
 
-# @api_view(['GET'])
-# def getMember(request, mId):
-#     member = Member.objects.filter(mId=mId)
-#     serializer = MemberSerializer(member, many=True)#serializer
-#     return Response(serializer.data)
 
 @api_view(['POST'])
 def addToCart(request):
@@ -167,6 +172,7 @@ def updateOrder(request):
         state = data['state'],
         startTime = data['startTime'],
         endTime = data['endTime']
+
     )
     serializer = OrdersSerializer(order, many=False)
     return redirect('/#/')
@@ -210,7 +216,7 @@ def upload_product(request):
         print(product_pic_files)
         print(auth_pic_files)
 
-        import json
+        
         form_data = json.loads(form_data_json)
         products = Product(
             name=form_data['name'],
@@ -250,11 +256,47 @@ def upload_product(request):
         return JsonResponse({'message': '照片上傳成功！'})
     return JsonResponse({'message': '請使用 POST 請求上傳照片。',})
 
+@api_view(["POST"])
+def search_products(request):
+    if request.method == "POST":
+        data = request.data
+        search_query = data.get("SearchQuery", "")
+        print(search_query)
+        response_data = []
+        result = Product.objects.filter(Q(brand__icontains=search_query)|Q(description__icontains=search_query) | Q(name__icontains=search_query))
+        for product in result:
+            info = (
+                PictureSerializer(
+                    Picture.objects.filter(pId=product.pId), many=True
+                ).data,
+            )
+            pic_json = json.dumps(info, ensure_ascii=False)
+            print(pic_json)
+            parsedata = json.loads(pic_json)
+            print(parsedata)
+            pics = parsedata[0][0]["picture"]
+            print(pics)
 
+            response_data.append(
+                {
+                    "pId": product.pId,
+                    "brand": product.brand,
+                    "name": product.name,
+                    "price": product.price,
+                    "pic": pics,
+                }
+            )
+        return Response(response_data)
+    else:
+        print("omg")
+        return Response({"error": "Invalid request method"})
+    
 #----------------vinnn----------------#
 @api_view(['POST'])
 def register_post(request):
     user=request.data
+    print(user)
+    print(user)
     serializer = RegisterSerializer(data=user)
     serializer.is_valid(raise_exception=True)
     serializer.save()
@@ -263,15 +305,14 @@ def register_post(request):
 
 
 @api_view(['POST'])
-@authentication_classes([SessionAuthentication])
+@authentication_classes([SessionAuthentication]) #restframework的session認證
 def login_post(request):
     serializer = LoginSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
+    serializer.is_valid(raise_exception=True) #不符合則raise_exception，引發異常
 
     username = serializer.validated_data['username']
     email = serializer.validated_data['email']
     tokens = serializer.validated_data['tokens']
-
     # Set user in session
     user = auth.authenticate(request, username=username, password=serializer.validated_data['password'])
 
@@ -281,23 +322,24 @@ def login_post(request):
         return Response({'username': username, 'email': email, 'tokens': tokens}, status=status.HTTP_200_OK)
         # return Response(serializer.data, status=status.HTTP_200_OK)
     else:
+       
         return JsonResponse({"message": "Login failed. Invalid credentials."}, status=401)
         # raise AuthenticationFailed('Invalid credentials, try again')
 
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated]) #要求用戶已經授權
 def logout_post(request):
     serializer = LogoutSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     serializer.save()
-    return Response(status=status.HTTP_204_NO_CONTENT)
+    return Response(status=status.HTTP_204_NO_CONTENT) #成功注销
 
 
 @api_view(['GET'])
-def csrf_token(request):
-    token = csrf.get_token(request)
+def csrf_token(request): #用來獲取csrf令牌
+    token = csrf.get_token(request) #獲取令牌
     return JsonResponse({'csrfToken': token})
 
 class CustomTokenObtainPairView(TokenObtainPairView):

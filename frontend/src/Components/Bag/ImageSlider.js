@@ -34,7 +34,7 @@ const ImageSlider = ({ slides }) => {
         transform: "translate(0, -50%)",
         left: "0px",
         fontSize: "45px",
-        color: "#fff",
+        color: "rgb(65, 71, 112)",
         zIndex: 1,
         cursor: "pointer",
     };
@@ -45,7 +45,7 @@ const ImageSlider = ({ slides }) => {
         transform: "translate(0, -50%)",
         right: "0px",
         fontSize: "45px",
-        color: "#fff",
+        color: "rgb(65, 71, 112)",
         zIndex: 1,
         cursor: "pointer",
     }

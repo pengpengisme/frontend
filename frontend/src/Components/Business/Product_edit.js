@@ -13,7 +13,7 @@ const Product_edit = ({data}) => {
             age: event.target.age.value,
             size: event.target.size.value,
             likes: data.likes,
-            state: ["to_ship", "delivery", "renting"].includes(data.state) ? event.target.state.value : data.state
+            state: data.state
         };
 
         fetch(`http://127.0.0.1:8000/api/update_product/${updatedData.pId}/`, {
@@ -64,18 +64,6 @@ const Product_edit = ({data}) => {
                                 <div className="edit_name">・尺寸</div>
                                 <div className="mb-3"><input type="text" className="edit_input" name="size" autoCorrect="off" autoCapitalize="off" defaultValue={data.size}></input></div>
                             </div>
-                            {["to_ship", "delivery", "renting"].includes(data.state) && (
-                                <div>
-                                    <div className="edit_name">・狀態</div>
-                                    <div className="mb-3">
-                                        <select name="state" className="edit_input" defaultValue={data.state}>
-                                            <option value="to_ship">出貨中</option>
-                                            <option value="delivery">配送中</option>
-                                            <option value="renting">租借中</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            )}
                             <div className="manager_btn_outline"><input className="edit_btn edit_float" type="submit" value="確認修改"></input></div>
                         </form>
                     </div>

@@ -23,6 +23,9 @@ urlpatterns = [
     path('signup/', TemplateView.as_view(template_name='index.html')),
     path('forget-password/', TemplateView.as_view(template_name='index.html')),
     path('update/', TemplateView.as_view(template_name='index.html')),
+    path('flow_system', TemplateView.as_view(template_name='index.html')),
+    
+
 
     path('api/member/', views.get_member, name="member"),
     path('api/member_likes/', views.get_member_like, name="likes"),
@@ -30,7 +33,7 @@ urlpatterns = [
     path('api/member/member_order/', views.getMemberOrder, name="member_order"),
     path('api/business/', views.getProduct, name="business"),
     path('api/update_product/<int:pId>/', views.updateProduct, name="updateProduct"),
-    
+    path('api/product_info/<int:pId>/', views.getProductInfo, name="productInfo"),
     path('api/product/<int:pId>/', views.getProducts, name="products"),
     path('api/picture/<int:pId>/', views.getPictures, name="pictures"),
     path('api/comment/<int:pId>/', views.getComments, name="comments"),
@@ -42,6 +45,9 @@ urlpatterns = [
     path('api/cart/', views.cart_api, name='cart_api'),
     path('api/cart/<int:cart_id>/', views.cart_delete, name='cart_delete'),
     path('api/upload_product/',views.upload_product, name='upload_product'),
+    path("api/search/", views.search_products, name="upload_product"),
+    
+    path('searchresult/', TemplateView.as_view(template_name='index.html')),
 
     path('token/', views.CustomTokenObtainPairView.as_view(), name ='token_obtain_pair'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name= 'token_refresh'),

@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500&display=swap');
 
-html{
+html {
     font-family: 'Noto Serif TC', serif;
     background-color: #EFEAE4;
 }
 
-.nav-up_outline{
+.nav-up_outline {
     position: sticky;
     top: 0;
-    z-index: 99;
 }
 
 .nav-up {
@@ -21,46 +20,47 @@ html{
     justify-content: space-between;
 }
 
-.site-title{
+.site-title {
     color: #33332E;
     text-decoration: none;
     padding: 0.5%;
-    font-size: 32px;
-    letter-spacing: 0.5rem;
+    font-size: 28px;
+    letter-spacing: 0.3rem;
 }
 
-.site-title:hover{
+.site-title:hover {
     color: #33332E;
 }
 
-.nav_group{
+.nav_group {
     display: flex;
     margin-top: 1.2%;
     margin-right: 3%;
 }
 
-.link_group{
+.link_group {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 }
 
-.link_group > .border{
+.link_group>.border {
     margin-top: 25.198px;
     width: 90px;
-    border-color: #EFEAE4!important;
+    border-color: #EFEAE4 !important;
 }
 
-.link_group > .business_border{
+.link_group>.business_border {
     margin-top: 25.198px;
 }
 
-.link_group > div > a {
+.link_group>div>a {
     color: #33332E;
     text-decoration: none;
     text-align: center;
 }
 
-.border{
+.border {
     height: 25px;
     bottom: 20px;
     position: relative;
@@ -70,7 +70,7 @@ html{
     text-align: center;
 }
 
-.border:after{
+.border:after {
     text-align: center;
     content: '';
     position: absolute;
@@ -85,18 +85,18 @@ html{
     transition: transform 0.5s ease-out, opacity 0.5s;
 }
 
-.border:hover:after{
+.border:hover:after {
     opacity: 1;
     transform: scaleX(1);
     transform-origin: left bottom;
 }
 
-.icon_group{
+.icon_group {
     display: contents;
     float: right;
 }
 
-.searchicon{
+.searchicon {
     padding-bottom: 2.5%;
     cursor: pointer;
     background-color: #EFEAE4;
@@ -106,27 +106,28 @@ html{
     border: 0;
     margin-top: -2%;
 }
-  
-.searchicon:hover{
+
+.searchicon:hover {
     background-color: #EFEAE4;
     color: #33332E;
     border: 0;
 }
 
 /* sidepanel */
-.closebtn{
+.closebtn {
     font-size: 25px;
     margin-left: 90%;
     cursor: pointer;
     color: #33332E;
 }
 
-.closebtn:hover{
+.closebtn:hover {
     color: #33332E;
 }
 
-.linksidebar  {
-    width: 0; /*原始設成0*/
+.linksidebar {
+    width: 0;
+    /*原始設成0*/
     position: fixed;
     z-index: 20;
     height: 100%;
@@ -139,7 +140,7 @@ html{
     opacity: 1;
 }
 
-.overlay-content{
+.overlay-content {
     margin-top: 15%;
     display: flex;
     flex-direction: column;
@@ -147,7 +148,7 @@ html{
     text-decoration: none;
 }
 
-.overlay-content a{
+.overlay-content a {
     color: #33332E;
     text-decoration: none;
     font-size: 15px;
@@ -155,8 +156,9 @@ html{
     padding: 7% 0%;
 }
 
-.cartsidebar  {
-    width: 0; /*原始設成0*/
+.cartsidebar {
+    width: 0;
+    /*原始設成0*/
     position: fixed;
     z-index: 99;
     height: 100%;
@@ -168,27 +170,29 @@ html{
     padding-top: 10px;
 }
 
-.searchbar{
+.searchbar {
     /* display: none; */
     height: 0;
     padding-bottom: 1%;
     background-color: #EFEAE4;
     border: 0;
     display: flex;
+    flex-direction: column;
     /* margin-bottom: 2%; */
+
 }
 
-.searchbar_icon{
+.searchbar_icon {
     margin-left: 5%;
     font-size: 22px;
 }
 
-.searchbar_input_div{
+.searchbar_input_div {
     width: 86.5%;
     padding-top: 0.1%;
 }
 
-.searchbar_input{
+.searchbar_input {
     margin-left: 2%;
     background-color: #EFEAE4;
     border: 0;
@@ -197,66 +201,121 @@ html{
     font-size: 15px;
 }
 
-.searchbar_input:focus{
+.searchbar_input:focus {
     border: 0;
     outline: none;
     border-bottom: 1px solid #33332E;
 }
 
-.searchbar_btn_div{
+.searchbar_btn_div {
     margin-top: 0.2%;
 }
 
-.searchbar_closebtn{
+.searchbar_closebtn {
     font-size: 20px;
     cursor: pointer;
     color: #33332E;
 }
-.searchbar_closebtn:hover{
+
+.searchbar_closebtn:hover {
     color: #33332E;
 }
 
+.searchbar_Asection {
+    display: flex;
+    flex-direction: row;
+}
+
+.eachresult {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border-bottom: solid #33332E 0.1px;
+    color: #33332E;
+}
+
+.eachresult:hover {
+    background-color: #c0c0c0;
+    cursor: pointer;
+}
+
+.searchresult {
+    background-color: #ffffff;
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 4%;
+    left: 8%;
+    font-size: 12px;
+    position: absolute;
+    box-shadow: 0 0 1px #c5c5c5;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.searchimg {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+
+}
+
+.resultp {
+    display: flex;
+    flex-direction: row;
+    padding-left: 3%;
+}
+
+
 @media screen and (max-width:1024px) {
-    .link_group{
+    .link_group {
         display: none;
     }
 }
 
-@media screen and (min-width: 431px) and (max-width: 1024px){
-    .link_group{
+@media screen and (min-width: 431px) and (max-width: 1024px) {
+    .link_group {
         display: none;
     }
-    .searchicon{
+
+    .searchicon {
         margin-top: -5%;
     }
 }
 
-@media screen and (min-width: 100px) and (max-width: 430px){
-    .site-title{
-        font-size: 27px;
+@media screen and (min-width: 100px) and (max-width: 430px) {
+    .site-title {
+        font-size: 23px;
     }
-    .searchicon{
+
+    .searchicon {
         font-size: 22px;
         margin-top: -10%;
     }
-    .searchbar{
+
+    .searchbar {
         margin-bottom: 3%;
     }
-    .searchbar_icon{
+
+    .searchbar_icon {
         margin-top: 0.6%;
         font-size: 20px;
     }
+
     .searchbar_input_div {
         width: 76.2%;
     }
-    .searchbar_input{
+
+    .searchbar_input {
         font-size: 13px;
         padding-bottom: 0.2%;
     }
-    .searchbar_btn_div{
+
+    .searchbar_btn_div {
         padding-top: 1%;
     }
-    .searchbar_closebtn{
+
+    .searchbar_closebtn {
         font-size: 18px;
     }
 }

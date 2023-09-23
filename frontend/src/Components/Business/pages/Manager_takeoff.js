@@ -47,7 +47,7 @@ function Manager_takeoff({data}){
                     <div className="bag_order_info padding">
                         <div className="bag_order_info_title">{item.brand}</div>
                         <div className="bag_order_info_word word_color">{item.name}</div>
-                        <button className='func_btn btn_1' onClick={() => deposite(item.pId, index)}><div>下架商品</div></button>
+                        <button className='func_btn btn_1' onClick={() => deposite(item.pId, index)}><div>上架商品</div></button>
                         <button className='func_btn btn_2' key={item.pId} onClick={() => editClick(item.pId)}><div>編輯商品</div></button>
                     </div>
                 </div>

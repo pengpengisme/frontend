@@ -1,25 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@500&family=Rubik:wght@300;400;500;600;700;800&display=swap');
 
-*{
+* {
   margin: 0;
   /* padding: 0; */
   /* box-sizing: border-box; */
 }
-:root{
+
+:root {
   --color-EFEAE4: #EFEAE4;
   --color-3b4149: #3b4149;
   --color-febd69: #ffffff;
   --color-232f3e: #232f3e;
 }
-body{
+
+body {
   font-family: 'Noto Serif HK', serif;
   background-color: #EFEAE4;
 }
+
 a {
   text-decoration: none;
   display: inline-block;
 }
-.form-control{
+
+.form-control {
   border-radius: 0rem;
   background-color: #EFEAE4;
   color: #33332E;
@@ -27,30 +31,37 @@ a {
   padding: 0.5rem 0.75rem;
   font-size: 13px;
 }
-.form-control:focus{
+
+.form-control:focus {
   box-shadow: none;
   border-color: #33332E;
   background-color: #EFEAE4;
 }
-.gap-10P{
+
+.gap-10P {
   gap: 10px;
 }
-.gap-15{
-  gap:15px;
+
+.gap-15 {
+  gap: 15px;
 }
-.gap-25{
-  gap:25px;
+
+.gap-25 {
+  gap: 25px;
 }
-.gap-30{
+
+.gap-30 {
   gap: 30px;
 }
-.text{
+
+.text {
   margin-top: 10%;
   font-size: 25px;
   letter-spacing: .2em;
   margin-bottom: 3%;
 }
-.button{
+
+.button {
   background-color: #524e4e;
   color: #fff;
   font-size: 13px;
@@ -59,31 +70,36 @@ a {
   margin: 0% 1%;
   border-radius: 0.2rem;
 }
-.button:hover{
+
+.button:hover {
   background-color: transparent;
   color: #524e4e;
   border: 1px solid #524e4e;
 }
 
 /* Header Part */
-.header-upper{
+.header-upper {
   background-color: var(--color-EFEAE4);
   position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
-.header-bottom{
+
+.header-bottom {
   background-color: var(--color-EFEAE4);
   /* border-bottom: 1px solid brown ; */
 }
-.header-upper .input-group-text{
+
+.header-upper .input-group-text {
   background-color: var(--color-ffffff);
 }
-.header-upper.header-upper-links img{
+
+.header-upper.header-upper-links img {
   width: 35px;
   height: 35px;
 }
-.header-bottom .menu-links a{
+
+.header-bottom .menu-links a {
   font-size: 14px;
   line-height: 18px;
   font-weight: 300;
@@ -91,58 +107,67 @@ a {
   text-transform: uppercase;
   color: var(--color-EFEAE4);
 }
-.header-bottom .dropdown button{
+
+.header-bottom .dropdown button {
   font-size: 14px;
   line-height: 18px;
   font-weight: 300;
   letter-spacing: .2;
   text-transform: uppercase;
 }
-.header-bottom .dropdown button:focus{
+
+.header-bottom .dropdown button:focus {
   box-shadow: none;
 }
-.header-bottom .dropdown-menu{
+
+.header-bottom .dropdown-menu {
   background-color: var(--color-EFEAE4);
   width: 100%;
 }
-.header-bottom .dropdown-item{
+
+.header-bottom .dropdown-item {
   padding: 20px;
   margin-bottom: 2px;
   border-bottom: 1px solid var(--color-3b4149);
 }
-.header-bottom .dropdown-item:hover{
+
+.header-bottom .dropdown-item:hover {
   background-color: transparent;
   color: red !important;
 }
-#nav-fixed{
+
+#nav-fixed {
   top: 0;
   right: 0;
   left: 0;
 }
+
 /* Header Part End */
 
 /* Footer Part */
 
-footer{
+footer {
   background-color: var(--color-EFEAE4);
 }
-footer:not(:first-child){
+
+footer:not(:first-child) {
   border-top: 1px solid brown;
 }
+
 /* Footer Part Ends */
 
 /* Home Page */
-.row{
+.row {
   margin: 0;
   background-color: #EFEAE4;
   padding: 0% 2%;
 }
 
-.home-wrapper-1{
+.home-wrapper-1 {
   background-color: #EFEAE4;
 }
 
-.readmore{
+.readmore {
   text-align: center;
   max-width: 224px;
   width: 100%;
@@ -154,11 +179,11 @@ footer:not(:first-child){
   transition: color 0.4s linear;
 }
 
-.readmore:hover{
+.readmore:hover {
   color: white;
 }
 
-.readmore:before{
+.readmore:before {
   content: "";
   position: absolute;
   left: 0;
@@ -173,12 +198,13 @@ footer:not(:first-child){
   transform: scaleX(0);
 }
 
-.readmore:hover::before{
+.readmore:hover::before {
   transform: scaleX(1);
 }
+
 /* Product Card */
 
-.product-card{
+.product-card {
   /* padding: 15px; */
   /* text-align: center; */
   margin-top: 10px;
@@ -186,32 +212,34 @@ footer:not(:first-child){
   border-radius: 10px;
 }
 
-.product-card .product-details h6{
+.product-card .product-details h6 {
   color: #1c1b1b;
   font-size: 13px;
 }
 
-.product-card .product-details h5{
+.product-card .product-details h5 {
   font-size: 14px;
   color: #1c1b1b;
 }
 
-.product-card .product-details p.price{
+.product-card .product-details p.price {
   font-size: 13px;
   color: #6a6a6a;
 }
 
-.blog-wrapper{
+.blog-wrapper {
   background-color: #EFEAE4;
 }
+
 /* Product Card end */
 
 /* Category Card */
-.col-6{
+.col-6 {
   margin-bottom: 5%;
   padding: 0% 3%;
   /* margin: 2.5%; */
 }
+
 .category-card {
   padding: 2% 0%;
   margin-top: 10px;
@@ -219,43 +247,49 @@ footer:not(:first-child){
   color: #ffffff;
   cursor: pointer;
 }
+
 .category-image:hover {
   opacity: 0.5;
 }
 
-.category-card:hover{
+.category-card:hover {
   color: #33332E;
 }
 
-.category-title{
+.category-title {
   margin-top: -50%;
   font-size: 15px;
   text-align: center;
 }
-.cate
-.anjenk{
+
+.cate .anjenk {
   background-image: url("../../images/bag_1.jpg");
 }
+
 /* Category Card end */
 /* Home Page Ends */
 
 /* Login Signup Page */
 
-.login-wrapper{
+.login-wrapper {
   padding: 0;
 }
-.auth-card{
+
+.auth-card {
   padding: 20px;
   max-width: 500px;
   margin: auto;
 }
-.forgotlink{
+
+.forgotlink {
   color: brown;
   font-size: 13px;
 }
-.forgotlink:hover{
+
+.forgotlink:hover {
   color: brown;
 }
+
 /* Login Signup Page end */
 
 /* Slideshow */
@@ -309,7 +343,8 @@ footer:not(:first-child){
   background-color: #6F7C65;
 }
 
-@media screen and (max-width: 576px){
+@media screen and (max-width: 576px) {
+
   /* section{
     position: fixed;
     z-index: -1;
@@ -317,16 +352,17 @@ footer:not(:first-child){
   .home-wrapper-2{
     top: 80%;
   } */
-  .text{
+  .text {
     font-size: 20px
   }
-  .product-card .product-details h5{
+
+  .product-card .product-details h5 {
     font-size: 12px;
     zoom: 0.8;
     /* float: left; */
   }
 
-  .product-card .product-details p.price{
+  .product-card .product-details p.price {
     font-size: 12px;
     zoom: 0.8;
     left: 0;
@@ -336,15 +372,15 @@ footer:not(:first-child){
     width: 50%;
   }
 
-  .col-sm-2{
+  .col-sm-2 {
     width: 50%;
   }
 
-  .category-image{
+  .category-image {
     margin: 5% 3%;
   }
 
-  .category-title{
+  .category-title {
     font-size: 12px;
   }
 }

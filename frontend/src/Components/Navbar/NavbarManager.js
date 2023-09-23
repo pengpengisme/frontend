@@ -37,7 +37,7 @@ const NavbarManager = () => {
         <>
             <div className='nav-up_outline'>
                 <nav className='nav-up'>
-                    <a href='/' className='site-title'>PETER</a>
+                    <a href='/' className='site-title'>Brandency</a>
                     <div className='nav_group'>
                         <div className='link_group'>
                             {linkNumbers.map((linkNumber, index) => (
